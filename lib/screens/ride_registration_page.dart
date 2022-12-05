@@ -178,32 +178,7 @@ class RiderRegistrationPage extends StatelessWidget {
                             const SizedBox(
                               height: 8,
                             ),
-                            // GeneralTextField(
-                            //   enabled: false,
-                            //   controller: vehicleController,
-                            //   title: 'Bike / Scooter',
-                            //   icon: Icon(Icons.arrow_drop_down_outlined),
-                            // ),
-                            GestureDetector(
-                              onTap: () => GeneralDropDown(changeVehicleValue),
-                              child: Container(
-                                height: 55,
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Bike / Scooter',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                            GeneralDropDown(changeVehicleValue),
                             const SizedBox(
                               height: 20,
                             ),
