@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class StringsConstant{
   static const String appBarTitle = 'Ride Registration';
   static const String beginTitle = 'Begin your Rider journey with us. Sign up Today !';
@@ -15,4 +13,5 @@ class StringsConstant{
   static const String vehiclePhoto = 'Vehicle Photo';
 
   static const String register = 'Register';
+  static const String done = 'Done';
 }

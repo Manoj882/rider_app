@@ -1,58 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:rider_app/constants/colors_constant.dart';
-import 'package:rider_app/constants/font_constant.dart';
+import '/constants/strings_constant.dart';
+import '/widgets/general_elevated_button.dart';
 
-class GenerralButtomSheet {
+class GeneralButtomSheet {
   customButtomSheet(BuildContext context) async {
     return await showModalBottomSheet(
       context: context,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(30),
         ),
       ),
-      builder: (context){
+      builder: (context) {
         return Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: 20,),
-              Text(
-                'Register your vehicle',
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                ),
+              const SizedBox(
+                height: 20,
               ),
-              SizedBox(height: 10,),
               Text(
-                'We will need to verify your vehicle for authenticity and security purpose. Be sure to upload genuine documents.',
+                StringsConstant.registerTitle,
+                style: Theme.of(context).textTheme.headline2,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                StringsConstant.verifyInfo,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: FontConstant.fontFamily,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: ColorsConstant.mediumGrey,
-                ),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
-              SizedBox(height: 30),
-              ElevatedButton(
+              const SizedBox(height: 30),
+              GeneralElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  backgroundColor: ColorsConstant.primary,
-                ),
-                child: Center(
-                  child: Text(
-                    'Done',
-                  ),
-                ),
+                buttonTitle: StringsConstant.done,
               ),
             ],
           ),

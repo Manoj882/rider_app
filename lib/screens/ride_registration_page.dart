@@ -1,19 +1,18 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rider_app/constants/assets_constant.dart';
-import 'package:rider_app/constants/colors_constant.dart';
-import 'package:rider_app/constants/font_constant.dart';
-import 'package:rider_app/constants/strings_constant.dart';
-import 'package:rider_app/utils/document_container.dart';
-import 'package:rider_app/utils/image_picker.dart';
-import 'package:rider_app/utils/text_form_field.dart';
-import 'package:rider_app/widgets/general_buttom_sheet.dart';
-import 'package:rider_app/widgets/general_drop_down.dart';
+import '/constants/assets_constant.dart';
+import '/constants/colors_constant.dart';
+import '/constants/strings_constant.dart';
+import '/utils/document_container.dart';
+import '/utils/text_form_field.dart';
+import '/widgets/general_buttom_sheet.dart';
+import '/widgets/general_drop_down.dart';
+import '/widgets/general_elevated_button.dart';
+import '/widgets/general_image_container.dart';
 
 class RiderRegistrationPage extends StatefulWidget {
-  RiderRegistrationPage({super.key});
+  const RiderRegistrationPage({super.key});
 
   @override
   State<RiderRegistrationPage> createState() => _RiderRegistrationPageState();
@@ -33,48 +32,46 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
   XFile? drivingLicenseBack;
   XFile? vehiclePhoto;
 
-  Future<Null> pickImage(String photoType) async{
-    switch(photoType){
+  Future<Null> pickImage(String photoType) async {
+    switch (photoType) {
       case 'Vehicle Registration Document':
-        if(vehicleDocumentPhoto != null){
+        if (vehicleDocumentPhoto != null) {
           setState(() {
             vehicleDocumentPhoto = null;
           });
         }
         break;
       case 'Driving License Front':
-        if(drivingLicenseFront != null){
+        if (drivingLicenseFront != null) {
           setState(() {
             drivingLicenseFront = null;
           });
         }
         break;
       case 'Driving License Back':
-        if(drivingLicenseBack != null){
+        if (drivingLicenseBack != null) {
           setState(() {
             drivingLicenseBack = null;
           });
         }
         break;
       case 'Vehicle Photo':
-        if(vehiclePhoto != null){
+        if (vehiclePhoto != null) {
           setState(() {
             vehiclePhoto = null;
           });
         }
         break;
-       
-
     }
     final imagePicker = ImagePicker();
 
-    final pickedCamera = await imagePicker.pickImage(source: ImageSource.camera, imageQuality: 100);
-   
+    final pickedCamera = await imagePicker.pickImage(
+        source: ImageSource.camera, imageQuality: 100);
 
-    switch(photoType){
+    switch (photoType) {
       case 'Vehicle Registration Document':
         setState(() {
-            vehicleDocumentPhoto = pickedCamera;
+          vehicleDocumentPhoto = pickedCamera;
         });
         break;
       case 'Driving License Front':
@@ -95,9 +92,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
     }
   }
 
-  
   Future<void> showOptionDialog(BuildContext context, String caseName) {
-    
     return showDialog(
       context: context,
       builder: (context) {
@@ -114,7 +109,6 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                     GestureDetector(
                       onTap: () {
                         // openGallery();
-                    
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -129,7 +123,6 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                         // openCamera();
                         pickImage(caseName);
                         Navigator.pop(context);
-                      
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -145,8 +138,6 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
       },
     );
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -258,7 +249,8 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                   child: Text(
                                     StringsConstant.verifyInfo,
                                     textAlign: TextAlign.center,
-                                    style: Theme.of(context).textTheme.bodyText1,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
                               ),
@@ -310,35 +302,19 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                 height: 10,
                               ),
                               GestureDetector(
-                                onTap: () async{
-                                  await showOptionDialog(context, 'Vehicle Registration Document');
-                                  
+                                onTap: () {
+                                  showOptionDialog(
+                                      context, 'Vehicle Registration Document');
                                 },
-                                  child: vehicleDocumentPhoto != null
-                                      ? Container(
-                                          padding: const EdgeInsets.all(10.0),
-                                          height: 170,
-                                          width: 374,
-                                          decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: ColorsConstant.borderColor,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(30),
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(20),
-                                            child: Image.file(
-                                              File(vehicleDocumentPhoto!.path),
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                      )
-                                      : const DocumentContainer(
-                                          height: 170,
-                                          width: 374,
-                                          documentTitle: 'Upload Document',
-                                        ),
+                                child: vehicleDocumentPhoto != null
+                                    ? GeneralImageContainer(
+                                        width: 374,
+                                        xFileName: vehicleDocumentPhoto!)
+                                    : const DocumentContainer(
+                                        height: 170,
+                                        width: 374,
+                                        documentTitle: 'Upload Document',
+                                      ),
                               ),
                               const SizedBox(
                                 height: 20,
@@ -366,67 +342,33 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   GestureDetector(
-                                    onTap: (){
-                                      showOptionDialog(context, 'Driving License Front');
+                                    onTap: () {
+                                      showOptionDialog(
+                                          context, 'Driving License Front');
                                     },
                                     child: drivingLicenseFront != null
-                                    ? Container(
-                                      padding: const EdgeInsets.all(10.0),
-                                      height: 170,
-                                      width: 170,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: ColorsConstant.borderColor,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image.file(
-                                          File(drivingLicenseFront!.path),
-                                          
-                                          fit: BoxFit.cover,
-                                          filterQuality: FilterQuality.high,
-                                        ),
-                                      ),
-                                    )
-                                    : const DocumentContainer(
-                                      height: 170,
-                                      width: 170,
-                                      documentTitle: 'Upload Front',
-                                    ),
+                                        ? GeneralImageContainer(
+                                            width: 170,
+                                            xFileName: drivingLicenseFront!)
+                                        : const DocumentContainer(
+                                            height: 170,
+                                            width: 170,
+                                            documentTitle: 'Upload Front',
+                                          ),
                                   ),
                                   GestureDetector(
-                                    onTap: (){
-                                      showOptionDialog(context, 'Driving License Back');
+                                    onTap: () {
+                                      showOptionDialog(
+                                          context, 'Driving License Back');
                                     },
-                                    child: drivingLicenseBack != null 
-                                    ? Container(
-                                      padding: const EdgeInsets.all(10.0),
-                                      height: 170,
-                                      width: 170,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: ColorsConstant.borderColor,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image.file(
-                                          File(drivingLicenseBack!.path),
-                                          
-                                          fit: BoxFit.cover,
-                                          filterQuality: FilterQuality.high,
-                                        ),
-                                      ),
-                                    )
-                                    : const DocumentContainer(
-                                        height: 170,
-                                        width: 170,
-                                        documentTitle: 'Upload Back'),
+                                    child: drivingLicenseBack != null
+                                        ? GeneralImageContainer(
+                                            width: 170,
+                                            xFileName: drivingLicenseBack!)
+                                        : const DocumentContainer(
+                                            height: 170,
+                                            width: 170,
+                                            documentTitle: 'Upload Back'),
                                   ),
                                 ],
                               ),
@@ -441,57 +383,26 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                 height: 8,
                               ),
                               GestureDetector(
-                                onTap: (){
+                                onTap: () {
                                   showOptionDialog(context, 'Vehicle Photo');
                                 },
                                 child: vehiclePhoto != null
-                                ? Container(
-                                          padding: const EdgeInsets.all(10.0),
-                                          height: 170,
-                                          width: 374,
-                                          decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: ColorsConstant.borderColor,
-                                            width: 1,
-                                          ),
-                                          borderRadius: BorderRadius.circular(30),
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(20),
-                                            child: Image.file(
-                                              File(vehiclePhoto!.path),
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                      )
-                                : const DocumentContainer(
-                                  height: 170,
-                                  width: 374,
-                                  documentTitle: 'Upload Document',
-                                ),
+                                    ? GeneralImageContainer(
+                                        width: 374, xFileName: vehiclePhoto!)
+                                    : const DocumentContainer(
+                                        height: 170,
+                                        width: 374,
+                                        documentTitle: 'Upload Document',
+                                      ),
                               ),
                               const SizedBox(
                                 height: 30,
                               ),
-                              SizedBox(
-                                height: 60,
-                                child: ElevatedButton(
-                                  onPressed: () async {
-                                    // await GenerralButtomSheet()
-                                    //     .customButtomSheet(context);
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    backgroundColor: ColorsConstant.primary,
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      StringsConstant.register,
-                                    ),
-                                  ),
-                                ),
+                              GeneralElevatedButton(
+                                onPressed: () async{
+                                  await GeneralButtomSheet().customButtomSheet(context);
+                                },
+                                buttonTitle: StringsConstant.register,
                               ),
                               const SizedBox(
                                 height: 20,
