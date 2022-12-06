@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rider_app/utils/size_utils.dart';
 import '/constants/colors_constant.dart';
 
 class GeneralImageContainer extends StatefulWidget {
@@ -21,7 +22,7 @@ class _GeneralImageContainerState extends State<GeneralImageContainer> {
   Widget build(BuildContext context) {
       return Container(
         padding: const EdgeInsets.all(10.0),
-        height: 170,
+        height: getVerticalSize(170),
         width: widget.width,
         decoration: BoxDecoration(
         border: Border.all(
@@ -35,6 +36,7 @@ class _GeneralImageContainerState extends State<GeneralImageContainer> {
           child: Image.file(
             File(widget.xFileName.path),
             fit: BoxFit.cover,
+            filterQuality: FilterQuality.high,
           ),
         ),
     );

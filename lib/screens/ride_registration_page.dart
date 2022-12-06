@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rider_app/utils/size_utils.dart';
 import '/constants/assets_constant.dart';
 import '/constants/colors_constant.dart';
 import '/constants/strings_constant.dart';
@@ -19,7 +20,7 @@ class RiderRegistrationPage extends StatefulWidget {
 }
 
 class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
-  String vehicleValue = 'Car';
+  String vehicleValue = StringsConstant.car;
 
   changeVehicleValue(String value) {
     setState(() {
@@ -113,8 +114,8 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.collections_outlined),
-                          Text('Gallery')
+                          Icon(IconDataConstant.collectionIcon),
+                          Text(StringsConstant.gallery),
                         ],
                       ),
                     ),
@@ -126,7 +127,10 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [Icon(Icons.camera_outlined), Text('Camera')],
+                        children: [
+                          Icon(IconDataConstant.cameraIcon),
+                          Text(StringsConstant.camera),
+                        ],
                       ),
                     ),
                   ],
@@ -142,10 +146,13 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
   @override
   Widget build(BuildContext context) {
     // print('Vehicle name: ${vehicleValue.toString()}');
+    // print('Height ${MediaQuery.of(context).size.height}');
+    // print('Width ${MediaQuery.of(context).size.width}');
+    // print('Status bar ${MediaQuery.of(context).padding.top}');
 
-    return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
+    return SafeArea(
+      child: Scaffold(
+        body: CustomScrollView(
           slivers: [
             SliverAppBar(
               backgroundColor: ColorsConstant.white,
@@ -161,21 +168,21 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                 style: Theme.of(context).textTheme.headline1,
               ),
               centerTitle: true,
-              expandedHeight: 320,
+              expandedHeight: getVerticalSize(320),
               pinned: true,
               floating: true,
               flexibleSpace: FlexibleSpaceBar(
                 background: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 50,
+                      SizedBox(
+                        height: getVerticalSize(50),
                       ),
                       Center(
                         child: Image.asset(
                           ImageConstants.rider_logo,
-                          height: 200,
-                          width: 200,
+                          height: getSize(200),
+                          width: getSize(200),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -183,8 +190,8 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                         height: 10,
                       ),
                       Container(
-                        height: 38,
-                        width: 233,
+                        height: getVerticalSize(38),
+                        width: getHorizontalSize(233),
                         child: Center(
                           child: Text(
                             StringsConstant.beginTitle,
@@ -193,8 +200,8 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 30,
+                      SizedBox(
+                        height: getVerticalSize(30),
                       ),
                     ],
                   ),
@@ -207,7 +214,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                 delegate: SliverChildListDelegate(
                   [
                     Container(
-                      height: 1350,
+                      // height: 1350,
+                      // height: MediaQuery.of(context).size.height * 1.63,
+                      height: getVerticalSize(1350),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: const BorderRadius.vertical(
@@ -223,15 +232,17 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                         ],
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 16),
+                        padding: EdgeInsets.symmetric(
+                          vertical: getVerticalSize(8),
+                          horizontal: getHorizontalSize(16),
+                        ),
                         child: Form(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const SizedBox(
-                                height: 30,
+                              SizedBox(
+                                height: getVerticalSize(30),
                               ),
                               Align(
                                 alignment: Alignment.center,
@@ -241,11 +252,12 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 16),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: getVerticalSize(8),
+                                    horizontal: getHorizontalSize(16)),
                                 child: Container(
-                                  height: 57,
-                                  width: 374,
+                                  height: getVerticalSize(57),
+                                  width: getHorizontalSize(374),
                                   child: Text(
                                     StringsConstant.verifyInfo,
                                     textAlign: TextAlign.center,
@@ -254,52 +266,52 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                height: 30,
+                              SizedBox(
+                                height: getVerticalSize(30),
                               ),
                               Text(
                                 StringsConstant.vehicle,
                                 style: Theme.of(context).textTheme.headline2,
                               ),
-                              const SizedBox(
-                                height: 8,
+                              SizedBox(
+                                height: getVerticalSize(8),
                               ),
                               GeneralDropDown(changeVehicleValue),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: getVerticalSize(20),
                               ),
                               Text(
                                 StringsConstant.vehicleModel,
                                 style: Theme.of(context).textTheme.headline2,
                               ),
-                              const SizedBox(
-                                height: 8,
+                              SizedBox(
+                                height: getVerticalSize(8),
                               ),
                               const GeneralTextField(
                                 title: 'e.g. Bajaj Pulsar NS 200',
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: getVerticalSize(20),
                               ),
                               Text(
                                 StringsConstant.vehicleRegisNo,
                                 style: Theme.of(context).textTheme.headline2,
                               ),
-                              const SizedBox(
-                                height: 8,
+                              SizedBox(
+                                height: getVerticalSize(8),
                               ),
                               const GeneralTextField(
                                 title: 'Type vehicle registration number',
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: getVerticalSize(20),
                               ),
                               Text(
                                 StringsConstant.vehicleRegisDocument,
                                 style: Theme.of(context).textTheme.headline2,
                               ),
-                              const SizedBox(
-                                height: 10,
+                              SizedBox(
+                                height: getVerticalSize(10),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -308,11 +320,11 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                 },
                                 child: vehicleDocumentPhoto != null
                                     ? GeneralImageContainer(
-                                        width: 374,
+                                        width: getHorizontalSize(374),
                                         xFileName: vehicleDocumentPhoto!)
-                                    : const DocumentContainer(
-                                        height: 170,
-                                        width: 374,
+                                    : DocumentContainer(
+                                        height: getVerticalSize(170),
+                                        width: getHorizontalSize(374),
                                         documentTitle: 'Upload Document',
                                       ),
                               ),
@@ -323,19 +335,19 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                 StringsConstant.drivingLicense,
                                 style: Theme.of(context).textTheme.headline2,
                               ),
-                              const SizedBox(
-                                height: 8,
+                              SizedBox(
+                                height: getVerticalSize(8),
                               ),
                               const GeneralTextField(title: 'e.g. 1012451662'),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: getVerticalSize(20),
                               ),
                               Text(
                                 StringsConstant.drivingLicenseDocument,
                                 style: Theme.of(context).textTheme.headline2,
                               ),
-                              const SizedBox(
-                                height: 8,
+                              SizedBox(
+                                height: getVerticalSize(8),
                               ),
                               Row(
                                 mainAxisAlignment:
@@ -348,11 +360,11 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                     },
                                     child: drivingLicenseFront != null
                                         ? GeneralImageContainer(
-                                            width: 170,
+                                            width: getHorizontalSize(170),
                                             xFileName: drivingLicenseFront!)
-                                        : const DocumentContainer(
-                                            height: 170,
-                                            width: 170,
+                                        : DocumentContainer(
+                                            height: getVerticalSize(170),
+                                            width: getHorizontalSize(170),
                                             documentTitle: 'Upload Front',
                                           ),
                                   ),
@@ -363,17 +375,17 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                     },
                                     child: drivingLicenseBack != null
                                         ? GeneralImageContainer(
-                                            width: 170,
+                                            width: getHorizontalSize(170),
                                             xFileName: drivingLicenseBack!)
-                                        : const DocumentContainer(
-                                            height: 170,
-                                            width: 170,
+                                        : DocumentContainer(
+                                            height: getVerticalSize(170),
+                                            width: getHorizontalSize(170),
                                             documentTitle: 'Upload Back'),
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: getVerticalSize(20),
                               ),
                               Text(
                                 StringsConstant.vehiclePhoto,
@@ -388,24 +400,27 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                 },
                                 child: vehiclePhoto != null
                                     ? GeneralImageContainer(
-                                        width: 374, xFileName: vehiclePhoto!)
-                                    : const DocumentContainer(
-                                        height: 170,
-                                        width: 374,
+                                        width: getHorizontalSize(374),
+                                        xFileName: vehiclePhoto!,
+                                      )
+                                    : DocumentContainer(
+                                        height: getVerticalSize(170),
+                                        width: getHorizontalSize(374),
                                         documentTitle: 'Upload Document',
                                       ),
                               ),
-                              const SizedBox(
-                                height: 30,
+                              SizedBox(
+                                height: getVerticalSize(30),
                               ),
                               GeneralElevatedButton(
-                                onPressed: () async{
-                                  await GeneralButtomSheet().customButtomSheet(context);
+                                onPressed: () async {
+                                  await GeneralButtomSheet()
+                                      .customButtomSheet(context);
                                 },
                                 buttonTitle: StringsConstant.register,
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: getVerticalSize(20),
                               ),
                             ],
                           ),

@@ -14,4 +14,10 @@ class StringsConstant{
 
   static const String register = 'Register';
   static const String done = 'Done';
+
+  static const String gallery = 'Gallery';
+  static const String camera = 'Camera';
+
+  static const String car = 'Car';
+   
 }

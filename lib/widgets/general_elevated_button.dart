@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rider_app/utils/size_utils.dart';
 import '/constants/colors_constant.dart';
 
 class GeneralElevatedButton extends StatefulWidget {
@@ -18,7 +19,7 @@ class _GeneralElevatedButtonState extends State<GeneralElevatedButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 60,
+        height: getVerticalSize(60),
         child: ElevatedButton(
           onPressed: widget.onPressed,
           style: ElevatedButton.styleFrom(

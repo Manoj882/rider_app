@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rider_app/utils/size_utils.dart';
 import '/constants/strings_constant.dart';
 import '/widgets/general_elevated_button.dart';
 
@@ -17,22 +18,22 @@ class GeneralButtomSheet {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: getVerticalSize(20),
               ),
               Text(
                 StringsConstant.registerTitle,
                 style: Theme.of(context).textTheme.headline2,
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: getVerticalSize(10),
               ),
               Text(
                 StringsConstant.verifyInfo,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: getVerticalSize(30)),
               GeneralElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);

@@ -1,9 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:rider_app/constants/colors_constant.dart';
-import 'package:rider_app/constants/font_constant.dart';
+import '/constants/colors_constant.dart';
+import '/constants/font_constant.dart';
 
 
 class DocumentContainer extends StatefulWidget {

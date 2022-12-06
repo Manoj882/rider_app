@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rider_app/constants/colors_constant.dart';
+import 'package:rider_app/utils/size_utils.dart';
 
 class GeneralDropDown extends StatefulWidget {
   const GeneralDropDown(this.function, {super.key});
@@ -32,7 +33,7 @@ class _GeneralDropDownState extends State<GeneralDropDown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: getVerticalSize(60),
       width: double.maxFinite,
       decoration: BoxDecoration(
         border: Border.all(
@@ -43,9 +44,9 @@ class _GeneralDropDownState extends State<GeneralDropDown> {
       ),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 8,
-            horizontal: 16,
+          padding: EdgeInsets.symmetric(
+            vertical: getVerticalSize(8),
+            horizontal: getHorizontalSize(16),
           ),
           
           child: DropdownButton<String>(

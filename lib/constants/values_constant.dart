@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class AppMargin{
   static const double margin10 = 10.0;
 }
