@@ -2,6 +2,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rider_app/constants/assets_constant.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/constants/font_constant.dart';
 import 'package:rider_app/constants/strings_constant.dart';
@@ -188,12 +189,8 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                 ),
               ),
               title: Text(
-                StringsConstant.registerTitle,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  color: ColorsConstant.darkGrey,
-                ),
+                StringsConstant.appBarTitle,
+                style: Theme.of(context).textTheme.headline1,
               ),
               centerTitle: true,
               expandedHeight: 320,
@@ -208,7 +205,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                       ),
                       Center(
                         child: Image.asset(
-                          'assets/images/rider_logo.png',
+                          ImageConstants.rider_logo,
                           height: 200,
                           width: 200,
                           fit: BoxFit.cover,
@@ -222,14 +219,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                         width: 233,
                         child: Center(
                           child: Text(
-                            'Begin your Rider journey with us. Sign up Today !',
+                            StringsConstant.beginTitle,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: ColorsConstant.mediumGrey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                         ),
                       ),
@@ -273,15 +265,11 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               const SizedBox(
                                 height: 30,
                               ),
-                              const Align(
+                              Align(
                                 alignment: Alignment.center,
                                 child: Text(
-                                  'Register your vehicle',
-                                  style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14,
-                                  ),
+                                  StringsConstant.registerTitle,
+                                  style: Theme.of(context).textTheme.headline2,
                                 ),
                               ),
                               Padding(
@@ -293,25 +281,16 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                   child: Text(
                                     'We will need to verify your vehicle for authenticity and security purpose. Be sure to upload genuine documents.',
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: FontConstant.fontFamily,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: ColorsConstant.mediumGrey,
-                                    ),
+                                    style: Theme.of(context).textTheme.bodyText1,
                                   ),
                                 ),
                               ),
                               const SizedBox(
                                 height: 30,
                               ),
-                              const Text(
-                                'Vehicle',
-                                style: TextStyle(
-                                  fontFamily: FontConstant.fontFamily,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Text(
+                                StringsConstant.vehicle,
+                                style: Theme.of(context).textTheme.headline2,
                               ),
                               const SizedBox(
                                 height: 8,
@@ -320,13 +299,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              const Text(
-                                'Vehicle Model',
-                                style: TextStyle(
-                                  fontFamily: FontConstant.fontFamily,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Text(
+                                StringsConstant.vehicleModel,
+                                style: Theme.of(context).textTheme.headline2,
                               ),
                               const SizedBox(
                                 height: 8,
@@ -337,13 +312,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              const Text(
-                                'Vehicle Registration Number',
-                                style: TextStyle(
-                                  fontFamily: FontConstant.fontFamily,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Text(
+                                StringsConstant.vehicleRegisNo,
+                                style: Theme.of(context).textTheme.headline2,
                               ),
                               const SizedBox(
                                 height: 8,
@@ -354,13 +325,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              const Text(
-                                'Vehicle Registration Document',
-                                style: TextStyle(
-                                  fontFamily: FontConstant.fontFamily,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Text(
+                                StringsConstant.vehicleRegisDocument,
+                                style: Theme.of(context).textTheme.headline2,
                               ),
                               const SizedBox(
                                 height: 10,
@@ -400,13 +367,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              const Text(
-                                'Driving License',
-                                style: TextStyle(
-                                  fontFamily: FontConstant.fontFamily,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Text(
+                                StringsConstant.drivingLicense,
+                                style: Theme.of(context).textTheme.headline2,
                               ),
                               const SizedBox(
                                 height: 8,
@@ -415,13 +378,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              const Text(
-                                'Driving License Document',
-                                style: TextStyle(
-                                  fontFamily: FontConstant.fontFamily,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Text(
+                                StringsConstant.drivingLicenseDocument,
+                                style: Theme.of(context).textTheme.headline2,
                               ),
                               const SizedBox(
                                 height: 8,
@@ -454,13 +413,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              const Text(
-                                'Vehicle Photo',
-                                style: TextStyle(
-                                  fontFamily: FontConstant.fontFamily,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Text(
+                                StringsConstant.vehiclePhoto,
+                                style: Theme.of(context).textTheme.headline2,
                               ),
                               const SizedBox(
                                 height: 8,
@@ -488,7 +443,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                   ),
                                   child: const Center(
                                     child: Text(
-                                      'Register',
+                                      StringsConstant.register,
                                     ),
                                   ),
                                 ),

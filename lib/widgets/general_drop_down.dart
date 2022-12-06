@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 
 class GeneralDropDown extends StatefulWidget {
-  const GeneralDropDown(this.function,{super.key});
+  const GeneralDropDown(this.function, {super.key});
 
   final Function(String) function;
 
@@ -11,24 +11,23 @@ class GeneralDropDown extends StatefulWidget {
 }
 
 class _GeneralDropDownState extends State<GeneralDropDown> {
-  final List<DropdownMenuItem<String>> list = [
-    const DropdownMenuItem(
-      child: Text('Bike'),
-      value: 'Bike',
-    ),
-    const DropdownMenuItem(
-      child: Text('Scooter'),
-      value: 'Scooter',
-    ),
-    const DropdownMenuItem(
-      child: Text('Car'),
-      value: 'Car',
-    ),
+  
+  List<String> vehicles = [
+    'Bike',
+    'Car',
+    'Scooter',
   ];
 
-  String? selectedValue;
+    List<DropdownMenuItem<String>> getVehicle(){
+      return vehicles.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList();
+    }
 
- 
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +40,20 @@ class _GeneralDropDownState extends State<GeneralDropDown> {
           color: ColorsConstant.borderColor,
         ),
         borderRadius: BorderRadius.circular(30),
-        
       ),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16,),
+          padding: const EdgeInsets.symmetric(
+            vertical: 8,
+            horizontal: 16,
+          ),
+          
           child: DropdownButton<String>(
-            items: list,
-            onChanged: (value){
+            items: getVehicle(),
+            onChanged: (newValue) {
               setState(() {
-                selectedValue = value!;
-                widget.function(value);
+                selectedValue = newValue!;
+                widget.function(newValue);
               });
             },
             hint: const Text('Car'),

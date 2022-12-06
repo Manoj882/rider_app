@@ -19,8 +19,16 @@ ThemeData getThemeData() {
       ),
     ),
     textTheme: TextTheme(
-      headline1: getRegularStyle(
+      headline1: getBoldStyle(
+        color: ColorsConstant.darkGrey,
+        fontSize: FontSize.size16,
+      ),
+      headline2: getRegularBoldStyle(
         color: ColorsConstant.black,
+        fontSize: FontSize.size14,
+      ),
+      bodyText1: getRegularStyle(
+        color: ColorsConstant.mediumGrey,
         fontSize: FontSize.size14,
       ),
     ),

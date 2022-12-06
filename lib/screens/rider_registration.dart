@@ -19,7 +19,7 @@ class RiderRegistrationScreen extends StatelessWidget {
           size: 20,
         ),
         title: Text(
-          StringsConstant.registerTitle,
+          StringsConstant.appBarTitle,
           style: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 16,
