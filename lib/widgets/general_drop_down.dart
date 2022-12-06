@@ -54,7 +54,7 @@ class _GeneralDropDownState extends State<GeneralDropDown> {
                 widget.function(value);
               });
             },
-            hint: const Text('Bike / Scooter'),
+            hint: const Text('Car'),
             value: selectedValue,
             isExpanded: true,
             underline: const SizedBox(),
