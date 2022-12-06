@@ -66,14 +66,15 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
        
 
     }
-    final imgPicker = ImagePicker();
+    final imagePicker = ImagePicker();
 
-    final pickedCamera = await imgPicker.pickImage(source: ImageSource.camera);
+    final pickedCamera = await imagePicker.pickImage(source: ImageSource.camera, imageQuality: 100);
+   
 
     switch(photoType){
       case 'Vehicle Registration Document':
         setState(() {
-          vehicleDocumentPhoto = pickedCamera;
+            vehicleDocumentPhoto = pickedCamera;
         });
         break;
       case 'Driving License Front':
@@ -95,12 +96,6 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
   }
 
   
-
-
-
-  //old
-  // XFile? vehicleDocumentFile;
-  // final imagePicker = ImagePicker();
   Future<void> showOptionDialog(BuildContext context, String caseName) {
     
     return showDialog(
@@ -119,6 +114,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                     GestureDetector(
                       onTap: () {
                         // openGallery();
+                    
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -150,26 +146,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
     );
   }
 
-  // void openGallery() async {
-  //   var imageGallery = await imagePicker.pickImage(
-  //     source: ImageSource.gallery,
-  //   );
-  //   // final File? imageFile = File(imageGallery!.path);
-  //   setState(() {
-  //     vehicleDocumentFile =imageGallery;
-  //   });
-  //   Navigator.of(context).pop();
-  // }
-
-  // void openCamera() async {
-  //   var imageGallery = await imagePicker.pickImage(
-  //     source: ImageSource.camera,
-  //   );
-  //   setState(() {
-  //     vehicleDocumentFile = XFile(imageGallery!.path);
-  //   });
-  //   Navigator.of(context).pop();
-  // }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -279,7 +256,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                   height: 57,
                                   width: 374,
                                   child: Text(
-                                    'We will need to verify your vehicle for authenticity and security purpose. Be sure to upload genuine documents.',
+                                    StringsConstant.verifyInfo,
                                     textAlign: TextAlign.center,
                                     style: Theme.of(context).textTheme.bodyText1,
                                   ),
@@ -337,32 +314,31 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                   await showOptionDialog(context, 'Vehicle Registration Document');
                                   
                                 },
-                                  child: Container(
-                                    height: 170,
-                                    width: 374,
-                                    decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: ColorsConstant.borderColor,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
                                   child: vehicleDocumentPhoto != null
-                                      ? Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Image.file(
-                                            File(vehicleDocumentPhoto!.path),
-                                            height: 150,
-                                            width: 150,
-                                            fit: BoxFit.contain,
+                                      ? Container(
+                                          padding: const EdgeInsets.all(10.0),
+                                          height: 170,
+                                          width: 374,
+                                          decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: ColorsConstant.borderColor,
+                                            width: 1,
+                                          ),
+                                          borderRadius: BorderRadius.circular(30),
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(20),
+                                            child: Image.file(
+                                              File(vehicleDocumentPhoto!.path),
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                       )
-                                      : DocumentContainer(
+                                      : const DocumentContainer(
                                           height: 170,
                                           width: 374,
                                           documentTitle: 'Upload Document',
                                         ),
-                                ),
                               ),
                               const SizedBox(
                                 height: 20,
@@ -393,7 +369,29 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                     onTap: (){
                                       showOptionDialog(context, 'Driving License Front');
                                     },
-                                    child: DocumentContainer(
+                                    child: drivingLicenseFront != null
+                                    ? Container(
+                                      padding: const EdgeInsets.all(10.0),
+                                      height: 170,
+                                      width: 170,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: ColorsConstant.borderColor,
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.file(
+                                          File(drivingLicenseFront!.path),
+                                          
+                                          fit: BoxFit.cover,
+                                          filterQuality: FilterQuality.high,
+                                        ),
+                                      ),
+                                    )
+                                    : const DocumentContainer(
                                       height: 170,
                                       width: 170,
                                       documentTitle: 'Upload Front',
@@ -403,7 +401,29 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                                     onTap: (){
                                       showOptionDialog(context, 'Driving License Back');
                                     },
-                                    child: DocumentContainer(
+                                    child: drivingLicenseBack != null 
+                                    ? Container(
+                                      padding: const EdgeInsets.all(10.0),
+                                      height: 170,
+                                      width: 170,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: ColorsConstant.borderColor,
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.file(
+                                          File(drivingLicenseBack!.path),
+                                          
+                                          fit: BoxFit.cover,
+                                          filterQuality: FilterQuality.high,
+                                        ),
+                                      ),
+                                    )
+                                    : const DocumentContainer(
                                         height: 170,
                                         width: 170,
                                         documentTitle: 'Upload Back'),
@@ -420,10 +440,35 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               const SizedBox(
                                 height: 8,
                               ),
-                              const DocumentContainer(
-                                height: 170,
-                                width: 374,
-                                documentTitle: 'Upload Document',
+                              GestureDetector(
+                                onTap: (){
+                                  showOptionDialog(context, 'Vehicle Photo');
+                                },
+                                child: vehiclePhoto != null
+                                ? Container(
+                                          padding: const EdgeInsets.all(10.0),
+                                          height: 170,
+                                          width: 374,
+                                          decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: ColorsConstant.borderColor,
+                                            width: 1,
+                                          ),
+                                          borderRadius: BorderRadius.circular(30),
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(20),
+                                            child: Image.file(
+                                              File(vehiclePhoto!.path),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                      )
+                                : const DocumentContainer(
+                                  height: 170,
+                                  width: 374,
+                                  documentTitle: 'Upload Document',
+                                ),
                               ),
                               const SizedBox(
                                 height: 30,

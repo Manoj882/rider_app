@@ -46,7 +46,7 @@ class _DocumentContainerState extends State<DocumentContainer> {
             ),
           ),
           Text(
-            'Upload Document',
+            widget.documentTitle,
             style: TextStyle(
               fontFamily: FontConstant.fontFamily,
               fontSize: 14,
