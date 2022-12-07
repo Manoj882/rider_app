@@ -216,7 +216,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                     Container(
                       // height: 1350,
                       // height: MediaQuery.of(context).size.height * 1.63,
-                      height: getVerticalSize(1350),
+                      // height: getVerticalSize(1350),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: const BorderRadius.vertical(

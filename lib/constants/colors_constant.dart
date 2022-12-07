@@ -9,7 +9,9 @@ class ColorsConstant{
   static Color black = HexColor.fromHex('#000000');
 
   static Color borderColor = HexColor.fromHex('#C4C4C4');
-  
+  static Color containerColor = HexColor.fromHex('#F7F8F9');
+  static Color starColor = HexColor.fromHex('#F0C21F');
+  static Color receiptColor = HexColor.fromHex('#F2F2F2');
 }
 
 extension HexColor on Color{

@@ -6,6 +6,7 @@ import 'package:rider_app/constants/values_constant.dart';
 
 ThemeData getThemeData() {
   return ThemeData(
+    // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
     primaryColor: ColorsConstant.primary,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -32,5 +33,6 @@ ThemeData getThemeData() {
         fontSize: FontSize.size14,
       ),
     ),
+    
   );
 }

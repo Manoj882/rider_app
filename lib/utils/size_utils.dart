@@ -41,3 +41,72 @@ double getSize(double px) {
     return width.toInt().toDouble();
   }
 }
+
+//This method is used to set text font size according to Viewport
+double getFontSize(double px) {
+  return getSize(px);
+}
+
+///This method is used to set padding responsively
+EdgeInsetsGeometry getPadding({
+  double? all,
+  double? left,
+  double? top,
+  double? right,
+  double? bottom,
+}) {
+  return getMarginOrPadding(
+    all: all,
+    left: left,
+    top: top,
+    right: right,
+    bottom: bottom,
+  );
+}
+
+///This method is used to set margin responsively
+EdgeInsetsGeometry getMargin({
+  double? all,
+  double? left,
+  double? top,
+  double? right,
+  double? bottom,
+}) {
+  return getMarginOrPadding(
+    all: all,
+    left: left,
+    top: top,
+    right: right,
+    bottom: bottom,
+  );
+}
+
+///This method is used to get padding or margin responsively
+EdgeInsetsGeometry getMarginOrPadding({
+  double? all,
+  double? left,
+  double? top,
+  double? right,
+  double? bottom,
+}) {
+  if (all != null) {
+    left = all;
+    top = all;
+    right = all;
+    bottom = all;
+  }
+  return EdgeInsets.only(
+    left: getHorizontalSize(
+      left ?? 0,
+    ),
+    top: getVerticalSize(
+      top ?? 0,
+    ),
+    right: getHorizontalSize(
+      right ?? 0,
+    ),
+    bottom: getVerticalSize(
+      bottom ?? 0,
+    ),
+  );
+}
