@@ -35,7 +35,8 @@ class GeneralTableRow{
     );
   }
 
-  buildTableRow({
+  buildTableRow(
+    BuildContext context,{
     required String title,
     required String value,
   }) {
@@ -46,8 +47,9 @@ class GeneralTableRow{
           textAlign: TextAlign.start,
         ),
         Text(
-          value,
+          'Rs. $value',
           textAlign: TextAlign.end,
+          style: Theme.of(context).textTheme.headline2,
         ),
       ],
     );

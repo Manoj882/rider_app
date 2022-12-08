@@ -28,7 +28,7 @@ class _RequestMoneyPageState extends State<RequestMoneyPage> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            GeneralSliverAppBar(),
+            const GeneralSliverAppBar(appBarTitle: StringsConstant.rideRegistration),
             SliverPadding(
               padding: getPadding(top: 0, bottom: 0, right: 16, left: 16),
               sliver: SliverList(
@@ -178,50 +178,6 @@ class _RequestMoneyPageState extends State<RequestMoneyPage> {
           SizedBox(
             height: getVerticalSize(10),
           ),
-
-          //
-
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   crossAxisAlignment: CrossAxisAlignment.end,
-          //   children: [
-          //     IconButton(
-          //       padding: getPadding(all: 0),
-          //       alignment: Alignment.bottomLeft,
-          //       onPressed: () {},
-          //       icon: SvgPicture.asset(
-          //         'assets/images/img_location.svg',
-          //       ),
-          //     ),
-          //     Text(model.destination),
-          //   ],
-          // ),
-          // Row(
-          //   children: [
-          //     Container(
-          //       padding: getPadding(left: 10, top: 3, bottom: 3, right: 0),
-          //       child: SvgPicture.asset(
-          //         'assets/images/img_vector.svg',
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     IconButton(
-          //       padding: getPadding(all: 0),
-          //       alignment: Alignment.topLeft,
-          //       onPressed: () {},
-          //       icon: SvgPicture.asset('assets/images/img_location_24X24.svg'),
-          //     ),
-          //     Text(model.location),
-          //   ],
-          // ),
-
-
-          //
           LocationToDestination(model: model),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -245,33 +201,6 @@ class _RequestMoneyPageState extends State<RequestMoneyPage> {
                   SizedBox(
                     width: getHorizontalSize(5),
                   ),
-                  // SvgPicture.asset(
-                  //   'assets/images/img_stars.svg',
-                  // ),
-
-                  // Container(
-                  //   child: RatingBar.builder(
-                  //     initialRating: model.rating,
-                  //     minRating: 1,
-                  //     itemCount: 5,
-                  //     unratedColor: Colors.grey.shade200,
-                  //     itemSize: getSize(30),
-                  //     allowHalfRating: true,
-                  //     direction: Axis.horizontal,
-                  //     itemBuilder: (context, _) {
-                  //       return Icon(
-                  //         Icons.star,
-                  //         color: ColorsConstant.starColor,
-                  //       );
-                  //     },
-                  //     onRatingUpdate: (rating) {
-                  //       setState(() {
-                  //         model.rating = rating;
-                  //         print('rating: ${model.rating}');
-                  //       });
-                  //     },
-                  //   ),
-                  // ),
 
                   GeneralRatingBar(rating: model.rating),
                 ],

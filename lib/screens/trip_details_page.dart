@@ -3,6 +3,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:rider_app/constants/colors_constant.dart';
+import 'package:rider_app/constants/strings_constant.dart';
 import 'package:rider_app/models/trip_model.dart';
 import 'package:rider_app/utils/general_rating_bar.dart';
 import 'package:rider_app/utils/general_sliver_app_bar.dart';
@@ -22,7 +23,7 @@ class TripDetailsPage extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            GeneralSliverAppBar(),
+            const GeneralSliverAppBar(appBarTitle: StringsConstant.rideRegistration,),
             SliverList(
               delegate: SliverChildListDelegate(
                 [
@@ -210,11 +211,13 @@ class TripDetailsPage extends StatelessWidget {
                                   child: Table(
                                     children: [
                                       GeneralTableRow().buildTableRow(
+                                        context,
                                         title: 'Base Fair',
                                         value: model.fairPrice.toString(),
                                       ),
                                       GeneralTableRow().buildTableSpacer(context),
                                       GeneralTableRow().buildTableRow(
+                                        context,
                                         title: 'Surge',
                                         value: model.surge.toString(),
                                       ),
@@ -225,6 +228,7 @@ class TripDetailsPage extends StatelessWidget {
                                       GeneralTableRow().buildTableSpacer(context),
                                       
                                       GeneralTableRow().buildTableRow(
+                                        context,
                                         title: 'Total',
                                         value:
                                             '${model.fairPrice + model.surge}',

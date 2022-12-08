@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rider_app/screens/request_money_page.dart';
+import 'package:rider_app/screens/dashboard_page.dart';
 import '/screens/ride_registration_page.dart';
 import '/utils/app_theme.dart';
 
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: getThemeData(),
       // home: RiderRegistrationPage(),
-      home: RequestMoneyPage(),
+      // home: RequestMoneyPage(),
+      // home: VehicleDetailsPage(),
+      home: DashboardPage(),
     );
   }
 }

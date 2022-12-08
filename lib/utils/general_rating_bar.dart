@@ -29,6 +29,7 @@ class _GeneralRatingBarState extends State<GeneralRatingBar> {
         unratedColor: Colors.grey.shade200,
         itemSize: getSize(30),
         allowHalfRating: true,
+        glow: false,
         direction: Axis.horizontal,
         itemBuilder: (context, _) {
           return Icon(

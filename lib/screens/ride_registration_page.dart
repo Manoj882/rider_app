@@ -164,7 +164,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                 ),
               ),
               title: Text(
-                StringsConstant.appBarTitle,
+                StringsConstant.rideRegistration,
                 style: Theme.of(context).textTheme.headline1,
               ),
               centerTitle: true,

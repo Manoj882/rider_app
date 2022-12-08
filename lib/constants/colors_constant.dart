@@ -12,6 +12,12 @@ class ColorsConstant{
   static Color containerColor = HexColor.fromHex('#F7F8F9');
   static Color starColor = HexColor.fromHex('#F0C21F');
   static Color receiptColor = HexColor.fromHex('#F2F2F2');
+  static Color fliterContainer = HexColor.fromHex('#F9F9F9');
+
+  static Color radioColor1 = HexColor.fromHex('#2A3887');
+  static Color radioColor2 = HexColor.fromHex('#007B55');
+
+  static Color analyticsColor = HexColor.fromHex('#1B1D1F');
 }
 
 extension HexColor on Color{
