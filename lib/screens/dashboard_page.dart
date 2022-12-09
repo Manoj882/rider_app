@@ -38,6 +38,9 @@ class _DashboardPageState extends State<DashboardPage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: CustomScrollView(
+          physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics(),
+          ),
           slivers: [
             const GeneralSliverAppBar(appBarTitle: StringsConstant.dashboard),
             SliverPadding(

@@ -60,6 +60,7 @@ class _VehicleDetailsPageState extends State<VehicleDetailsPage> {
       backgroundColor: ColorsConstant.white,
       body: SafeArea(
         child: CustomScrollView(
+          physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             const GeneralSliverAppBar(appBarTitle: StringsConstant.myVehicle),
             SliverPadding(
@@ -70,7 +71,7 @@ class _VehicleDetailsPageState extends State<VehicleDetailsPage> {
                 delegate: SliverChildListDelegate(
                   [
                     SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
+                      // physics: const BouncingScrollPhysics(),
                       child: Column(
                         children: [
                           buildContainer(

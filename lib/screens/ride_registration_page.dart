@@ -145,13 +145,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
 
   @override
   Widget build(BuildContext context) {
-    // print('Vehicle name: ${vehicleValue.toString()}');
-    // print('Height ${MediaQuery.of(context).size.height}');
-    // print('Width ${MediaQuery.of(context).size.width}');
-    // print('Status bar ${MediaQuery.of(context).padding.top}');
-
     return SafeArea(
       child: Scaffold(
+        backgroundColor: ColorsConstant.white,
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -279,7 +275,6 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               //drop down for vehicle item
                               GeneralDropDown(changeVehicleValue),
 
-                              
                               SizedBox(
                                 height: getVerticalSize(20),
                               ),

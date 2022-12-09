@@ -28,6 +28,7 @@ class _RequestMoneyPageState extends State<RequestMoneyPage> {
       backgroundColor: ColorsConstant.white,
       body: SafeArea(
         child: CustomScrollView(
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
             const GeneralSliverAppBar(appBarTitle: StringsConstant.rideRegistration),
             SliverPadding(

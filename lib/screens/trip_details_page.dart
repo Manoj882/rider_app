@@ -1,6 +1,3 @@
-
-
-import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/constants/strings_constant.dart';
@@ -22,8 +19,13 @@ class TripDetailsPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
+          physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics(),
+          ),
           slivers: [
-            const GeneralSliverAppBar(appBarTitle: StringsConstant.rideRegistration,),
+            const GeneralSliverAppBar(
+              appBarTitle: StringsConstant.rideRegistration,
+            ),
             SliverList(
               delegate: SliverChildListDelegate(
                 [
@@ -213,25 +215,27 @@ class TripDetailsPage extends StatelessWidget {
                                       GeneralTableRow().buildTableRow(
                                         context,
                                         title: 'Base Fair',
-                                        value: 'Rs. ${model.fairPrice.toString()}',
+                                        value:
+                                            'Rs. ${model.fairPrice.toString()}',
                                       ),
-                                      GeneralTableRow().buildTableSpacer(context),
+                                      GeneralTableRow()
+                                          .buildTableSpacer(context),
                                       GeneralTableRow().buildTableRow(
                                         context,
                                         title: 'Surge',
                                         value: 'Rs. ${model.surge.toString()}',
                                       ),
-                                      GeneralTableRow().buildTableSpacer(context),
-                                     
-                                      GeneralTableRow().buildTableDottedDivider(context),
-                                      
-                                      GeneralTableRow().buildTableSpacer(context),
-                                      
+                                      GeneralTableRow()
+                                          .buildTableSpacer(context),
+                                      GeneralTableRow()
+                                          .buildTableDottedDivider(context),
+                                      GeneralTableRow()
+                                          .buildTableSpacer(context),
                                       GeneralTableRow().buildTableRow(
                                         context,
                                         title: 'Total',
                                         value:
-                                            'Rs. {${model.fairPrice + model.surge}}',
+                                            'Rs. ${model.fairPrice + model.surge}',
                                       ),
                                     ],
                                   ),
@@ -258,12 +262,4 @@ class TripDetailsPage extends StatelessWidget {
       ),
     );
   }
-
-   
-
-  
 }
-
-
-
-
