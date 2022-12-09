@@ -17,10 +17,11 @@ class _GeneralDropDownState extends State<GeneralDropDown> {
     'Bike',
     'Car',
     'Scooter',
+    'Taxi',
   ];
 
     List<DropdownMenuItem<String>> getVehicle(){
-      return vehicles.map<DropdownMenuItem<String>>((String value) {
+      return vehicles.map<DropdownMenuItem<String>>((String value ) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
@@ -28,7 +29,12 @@ class _GeneralDropDownState extends State<GeneralDropDown> {
       }).toList();
     }
 
-  String? selectedValue;
+  String selectedValue = 'Bike';
+ 
+ 
+
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -51,15 +57,19 @@ class _GeneralDropDownState extends State<GeneralDropDown> {
           
           child: DropdownButton<String>(
             items: getVehicle(),
+            
             onChanged: (newValue) {
               setState(() {
-                selectedValue = newValue!;
-                widget.function(newValue);
+               
+                selectedValue = newValue.toString();
+                widget.function(newValue.toString());
+               
               });
             },
+          
             hint: const Text('Car'),
-            value: selectedValue,
-            isExpanded: true,
+            value:selectedValue,
+            isExpanded:true,
             underline: const SizedBox(),
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rider_app/constants/colors_constant.dart';
@@ -101,30 +102,33 @@ class _DashboardPageState extends State<DashboardPage> {
                           SizedBox(
                             height: getVerticalSize(10),
                           ),
-                          GridView.builder(
-                            shrinkWrap: true,
-                            physics: BouncingScrollPhysics(),
-                            itemCount: listOfDashboardData.length,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: getVerticalSize(1),
-                              crossAxisSpacing: getHorizontalSize(20),
-                              mainAxisExtent: getVerticalSize(120),
+                          Container(
+                            color: ColorsConstant.white,
+                            child: GridView.builder(
+                              shrinkWrap: true,
+                              physics: const BouncingScrollPhysics(),
+                              itemCount: listOfDashboardData.length,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: getVerticalSize(1),
+                                crossAxisSpacing: getHorizontalSize(20),
+                                mainAxisExtent: getVerticalSize(120),
+                              ),
+                              itemBuilder: (context, index) {
+                                return InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedIndex = index;
+                                    });
+                                  },
+                                  child: getGridViewContainer(
+                                    model: listOfDashboardData[index],
+                                    index: index,
+                                  ),
+                                );
+                              },
                             ),
-                            itemBuilder: (context, index) {
-                              return InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    selectedIndex = index;
-                                  });
-                                },
-                                child: getGridViewContainer(
-                                  model: listOfDashboardData[index],
-                                  index: index,
-                                ),
-                              );
-                            },
                           ),
                           SizedBox(
                             height: getVerticalSize(10),

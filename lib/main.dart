@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: getThemeData(),
       // home: RiderRegistrationPage(),
-      // home: RequestMoneyPage(),
+      home: RequestMoneyPage(),
       // home: DashboardPage(),
-      home: VehicleDetailsPage(),
+      // home: VehicleDetailsPage(),
     );
   }
 }

@@ -7,7 +7,7 @@ import '/constants/colors_constant.dart';
 import '/constants/strings_constant.dart';
 import '/utils/document_container.dart';
 import '/utils/text_form_field.dart';
-import '/widgets/general_buttom_sheet.dart';
+import '../widgets/buttom_sheet/general_buttom_sheet.dart';
 import '/widgets/general_drop_down.dart';
 import '/widgets/general_elevated_button.dart';
 import '/widgets/general_image_container.dart';
@@ -20,11 +20,11 @@ class RiderRegistrationPage extends StatefulWidget {
 }
 
 class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
-  String vehicleValue = StringsConstant.car;
+  String? vehicleValue;
 
   changeVehicleValue(String value) {
     setState(() {
-      vehicleValue = value;
+      vehicleValue = value.toString();
     });
   }
 
@@ -276,7 +276,10 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               SizedBox(
                                 height: getVerticalSize(8),
                               ),
+                              //drop down for vehicle item
                               GeneralDropDown(changeVehicleValue),
+
+                              
                               SizedBox(
                                 height: getVerticalSize(20),
                               ),
