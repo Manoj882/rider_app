@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/constants/strings_constant.dart';
 import 'package:rider_app/models/trip_model.dart';
+import 'package:rider_app/utils/circle_avatar_image.dart';
 import 'package:rider_app/utils/general_rating_bar.dart';
 import 'package:rider_app/utils/general_sliver_app_bar.dart';
 import 'package:rider_app/utils/location_to_destination.dart';
@@ -110,20 +111,7 @@ class TripDetailsPage extends StatelessWidget {
                           LocationToDestination(model: model),
                           Row(
                             children: [
-                              CircleAvatar(
-                                backgroundColor: ColorsConstant.primary,
-                                radius: getVerticalSize(33),
-                                child: CircleAvatar(
-                                  radius: getVerticalSize(30),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                        getVerticalSize(50)),
-                                    child: Image.asset(
-                                      model.userImage,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              CircleAvatarImage(avatarImage: model.userImage),
                               SizedBox(
                                 width: 10,
                               ),

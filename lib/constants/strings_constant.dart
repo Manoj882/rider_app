@@ -1,7 +1,10 @@
 class StringsConstant{
+  //app bar title
   static const String rideRegistration = 'Ride Registration';
   static const String myVehicle = 'My Vehicle';
   static const String dashboard = 'Dashboard';
+  static const String myReviews = 'My Reviews';
+
   static const String beginTitle = 'Begin your Rider journey with us. Sign up Today !';
   static const String registerTitle = 'Register your vehicle';
   static const String verifyInfo = 'We will need to verify your vehicle for authenticity and security purpose. Be sure to upload genuine documents.';

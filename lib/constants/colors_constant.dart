@@ -19,6 +19,8 @@ class ColorsConstant{
 
   static Color analyticsColor = HexColor.fromHex('#1B1D1F');
   static Color expandCollapseBorder = HexColor.fromHex('#E5E5E5');
+
+  static Color daysAgoColor = HexColor.fromHex('#A9A8A8');
 }
 
 extension HexColor on Color{
