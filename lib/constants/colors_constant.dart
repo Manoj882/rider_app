@@ -18,6 +18,7 @@ class ColorsConstant{
   static Color radioColor2 = HexColor.fromHex('#007B55');
 
   static Color analyticsColor = HexColor.fromHex('#1B1D1F');
+  static Color expandCollapseBorder = HexColor.fromHex('#E5E5E5');
 }
 
 extension HexColor on Color{

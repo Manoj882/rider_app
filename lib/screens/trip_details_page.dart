@@ -213,13 +213,13 @@ class TripDetailsPage extends StatelessWidget {
                                       GeneralTableRow().buildTableRow(
                                         context,
                                         title: 'Base Fair',
-                                        value: model.fairPrice.toString(),
+                                        value: 'Rs. ${model.fairPrice.toString()}',
                                       ),
                                       GeneralTableRow().buildTableSpacer(context),
                                       GeneralTableRow().buildTableRow(
                                         context,
                                         title: 'Surge',
-                                        value: model.surge.toString(),
+                                        value: 'Rs. ${model.surge.toString()}',
                                       ),
                                       GeneralTableRow().buildTableSpacer(context),
                                      
@@ -231,7 +231,7 @@ class TripDetailsPage extends StatelessWidget {
                                         context,
                                         title: 'Total',
                                         value:
-                                            '${model.fairPrice + model.surge}',
+                                            'Rs. {${model.fairPrice + model.surge}}',
                                       ),
                                     ],
                                   ),

@@ -47,7 +47,7 @@ class GeneralTableRow{
           textAlign: TextAlign.start,
         ),
         Text(
-          'Rs. $value',
+          value,
           textAlign: TextAlign.end,
           style: Theme.of(context).textTheme.headline2,
         ),
