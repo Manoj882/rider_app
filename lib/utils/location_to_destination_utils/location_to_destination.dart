@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rider_app/models/trip_model.dart';
-import 'package:rider_app/utils/size_utils.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
 
 class LocationToDestination extends StatefulWidget {
   LocationToDestination(

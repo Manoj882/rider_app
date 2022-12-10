@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:rider_app/constants/colors_constant.dart';
-import 'package:rider_app/utils/size_utils.dart';
-import 'package:rider_app/widgets/general_elevated_button.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/widgets/custom_elevated_button_widget/general_elevated_button.dart';
 
 class GeneralDateFilterButtomSheet {
   final fromDateController = TextEditingController();

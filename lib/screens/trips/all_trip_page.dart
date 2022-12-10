@@ -4,21 +4,21 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/constants/strings_constant.dart';
 import 'package:rider_app/models/trip_model.dart';
-import 'package:rider_app/screens/trip_details_page.dart';
-import 'package:rider_app/utils/general_rating_bar.dart';
-import 'package:rider_app/utils/general_sliver_app_bar.dart';
-import 'package:rider_app/utils/location_to_destination.dart';
-import 'package:rider_app/utils/size_utils.dart';
+import 'package:rider_app/screens/trips/trip_details_page.dart';
+import 'package:rider_app/utils/rating_bar_utils/general_rating_bar.dart';
+import 'package:rider_app/utils/sliver_appbar/general_sliver_app_bar.dart';
+import 'package:rider_app/utils/location_to_destination_utils/location_to_destination.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
 import 'package:rider_app/widgets/buttom_sheet/pick_date_buttomsheet/date_filter_container.dart';
 
-class RequestMoneyPage extends StatefulWidget {
-  const RequestMoneyPage({super.key});
+class AllTripPage extends StatefulWidget {
+  const AllTripPage({super.key});
 
   @override
-  State<RequestMoneyPage> createState() => _RequestMoneyPageState();
+  State<AllTripPage> createState() => _AllTripPageState();
 }
 
-class _RequestMoneyPageState extends State<RequestMoneyPage> {
+class _AllTripPageState extends State<AllTripPage> {
   
 
   

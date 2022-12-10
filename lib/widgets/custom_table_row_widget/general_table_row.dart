@@ -1,7 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:rider_app/constants/colors_constant.dart';
-import 'package:rider_app/utils/size_utils.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
 
 class GeneralTableRow{
   buildTableDivider(BuildContext context) {

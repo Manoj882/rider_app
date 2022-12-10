@@ -4,11 +4,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/constants/strings_constant.dart';
 import 'package:rider_app/models/vehicle_details_model.dart';
-import 'package:rider_app/utils/general_sliver_app_bar.dart';
-import 'package:rider_app/utils/size_utils.dart';
-import 'package:rider_app/widgets/document_image.dart';
-import 'package:rider_app/widgets/expandable_collapsable.dart';
-import 'package:rider_app/widgets/general_table_row.dart';
+import 'package:rider_app/utils/sliver_appbar/general_sliver_app_bar.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/widgets/vehicle_documents/document_image.dart';
+import 'package:rider_app/widgets/vehicle_documents/expandable_collapsable.dart';
+import 'package:rider_app/widgets/custom_table_row_widget/general_table_row.dart';
 
 class VehicleDetailsPage extends StatefulWidget {
   const VehicleDetailsPage({super.key});

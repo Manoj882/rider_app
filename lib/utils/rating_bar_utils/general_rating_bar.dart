@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/models/trip_model.dart';
-import 'package:rider_app/utils/size_utils.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
 
 
 class GeneralRatingBar extends StatefulWidget {

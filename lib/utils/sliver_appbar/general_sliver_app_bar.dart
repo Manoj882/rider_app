@@ -26,7 +26,10 @@ class _GeneralSliverAppBarState extends State<GeneralSliverAppBar> {
           ),
           centerTitle: true,
           leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+
+            },
             icon: SvgPicture.asset(
               'assets/images/img_arrowleft.svg',
               color: ColorsConstant.darkGrey,

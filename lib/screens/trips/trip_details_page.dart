@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/constants/strings_constant.dart';
 import 'package:rider_app/models/trip_model.dart';
-import 'package:rider_app/utils/circle_avatar_image.dart';
-import 'package:rider_app/utils/general_rating_bar.dart';
-import 'package:rider_app/utils/general_sliver_app_bar.dart';
-import 'package:rider_app/utils/location_to_destination.dart';
-import 'package:rider_app/utils/size_utils.dart';
-import 'package:rider_app/widgets/general_elevated_button.dart';
-import 'package:rider_app/widgets/general_table_row.dart';
+import 'package:rider_app/utils/image_utils/circle_avatar_image.dart';
+import 'package:rider_app/utils/rating_bar_utils/general_rating_bar.dart';
+import 'package:rider_app/utils/sliver_appbar/general_sliver_app_bar.dart';
+import 'package:rider_app/utils/location_to_destination_utils/location_to_destination.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/widgets/custom_elevated_button_widget/general_elevated_button.dart';
+import 'package:rider_app/widgets/custom_table_row_widget/general_table_row.dart';
 
 class TripDetailsPage extends StatelessWidget {
   const TripDetailsPage({required this.model, super.key});

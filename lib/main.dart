@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:rider_app/screens/request_money_page.dart';
-import 'package:rider_app/screens/dashboard_page.dart';
-import 'package:rider_app/screens/reviews/my_reviews_page.dart';
-import 'package:rider_app/screens/vehicle_details.dart';
-import '/screens/ride_registration_page.dart';
-import '/utils/app_theme.dart';
+import '/screens/maps/map_home_screen.dart';
+import 'screens/trips/all_trip_page.dart';
+import 'screens/dashboard/dashboard_page.dart';
+import '/screens/reviews/my_reviews_page.dart';
+import 'screens/documents/vehicle_details.dart';
+import 'screens/registration/ride_registration_page.dart';
+import 'utils/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,10 +22,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: getThemeData(),
       // home: RiderRegistrationPage(),
-      // home: RequestMoneyPage(),
+      // home: AllTripPage(),
       // home: DashboardPage(),
       // home: VehicleDetailsPage(),
-      home: MyReviewsPage(),
+      // home: MyReviewsPage(),
+      home: MapHomeScreen(),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rider_app/constants/colors_constant.dart';
-import 'package:rider_app/utils/size_utils.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
 
 class DocumentImage extends StatefulWidget {
   const DocumentImage({required this.documentImageUrl, 

@@ -1,16 +1,16 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rider_app/utils/size_utils.dart';
+import 'package:rider_app/utils/form_field_utils/size_utils.dart';
 import '/constants/assets_constant.dart';
 import '/constants/colors_constant.dart';
 import '/constants/strings_constant.dart';
-import '/utils/document_container.dart';
-import '/utils/text_form_field.dart';
-import '../widgets/buttom_sheet/general_buttom_sheet.dart';
-import '/widgets/general_drop_down.dart';
-import '/widgets/general_elevated_button.dart';
-import '/widgets/general_image_container.dart';
+import '../../utils/vehicle_document_utils/document_container.dart';
+import '../../utils/form_fields_utils/text_form_field.dart';
+import '../../widgets/buttom_sheet/general_buttom_sheet.dart';
+import '../../widgets/dropdown_widgets/general_drop_down.dart';
+import '../../widgets/custom_elevated_button_widget/general_elevated_button.dart';
+import '../../widgets/xFile_image_container_widget/general_image_container.dart';
 
 class RiderRegistrationPage extends StatefulWidget {
   const RiderRegistrationPage({super.key});
