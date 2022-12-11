@@ -24,10 +24,24 @@ class _MyReviewsPageState extends State<MyReviewsPage> {
         physics: const BouncingScrollPhysics(
             parent: AlwaysScrollableScrollPhysics()),
         slivers: [
-          const GeneralSliverAppBar(appBarTitle: StringsConstant.myReviews),
+          GeneralSliverAppBar(
+            appBarTitle: StringsConstant.myReviews,
+            bottom: PreferredSize(
+              preferredSize: const Size(
+                double.maxFinite,
+                57,
+              ),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getHorizontalSize(16),
+                ),
+                child: const DateFilterContainer(),
+              ),
+            ),
+          ),
           SliverPadding(
             padding: EdgeInsets.symmetric(
-              horizontal: getVerticalSize(16),
+              horizontal: getHorizontalSize(16),
             ),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
@@ -35,7 +49,7 @@ class _MyReviewsPageState extends State<MyReviewsPage> {
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        const DateFilterContainer(),
+                        // const DateFilterContainer(),
                         ListView.separated(
                           physics: const BouncingScrollPhysics(),
                           padding: getPadding(all: 0),

@@ -24,7 +24,7 @@ class TripDetailsPage extends StatelessWidget {
             parent: AlwaysScrollableScrollPhysics(),
           ),
           slivers: [
-            const GeneralSliverAppBar(
+            GeneralSliverAppBar(
               appBarTitle: StringsConstant.rideRegistration,
             ),
             SliverList(

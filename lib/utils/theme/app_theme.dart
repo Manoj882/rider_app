@@ -8,6 +8,7 @@ ThemeData getThemeData() {
   return ThemeData(
     // colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.red),
     primaryColor: ColorsConstant.primary,
+    scaffoldBackgroundColor: ColorsConstant.white,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: ColorsConstant.primary,

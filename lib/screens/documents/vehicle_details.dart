@@ -62,7 +62,7 @@ class _VehicleDetailsPageState extends State<VehicleDetailsPage> {
         child: CustomScrollView(
           physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           slivers: [
-            const GeneralSliverAppBar(appBarTitle: StringsConstant.myVehicle),
+            GeneralSliverAppBar(appBarTitle: StringsConstant.myVehicle),
             SliverPadding(
               padding: EdgeInsets.symmetric(
                   vertical: getVerticalSize(8),

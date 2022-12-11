@@ -4,6 +4,7 @@ class StringsConstant{
   static const String myVehicle = 'My Vehicle';
   static const String dashboard = 'Dashboard';
   static const String myReviews = 'My Reviews';
+  static const String menu = 'Menu';
 
   static const String beginTitle = 'Begin your Rider journey with us. Sign up Today !';
   static const String registerTitle = 'Register your vehicle';

@@ -21,6 +21,7 @@ class ColorsConstant{
   static Color expandCollapseBorder = HexColor.fromHex('#E5E5E5');
 
   static Color daysAgoColor = HexColor.fromHex('#A9A8A8');
+  static Color tileTitleColor = HexColor.fromHex('#455A64');
 }
 
 extension HexColor on Color{

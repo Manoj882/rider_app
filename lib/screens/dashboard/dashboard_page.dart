@@ -42,7 +42,7 @@ class _DashboardPageState extends State<DashboardPage> {
             parent: AlwaysScrollableScrollPhysics(),
           ),
           slivers: [
-            const GeneralSliverAppBar(appBarTitle: StringsConstant.dashboard),
+            GeneralSliverAppBar(appBarTitle: StringsConstant.dashboard),
             SliverPadding(
               padding: EdgeInsets.symmetric(
                 vertical: getVerticalSize(8),

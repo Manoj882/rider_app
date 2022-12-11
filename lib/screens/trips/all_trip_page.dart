@@ -19,18 +19,30 @@ class AllTripPage extends StatefulWidget {
 }
 
 class _AllTripPageState extends State<AllTripPage> {
-  
-
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsConstant.white,
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics()),
           slivers: [
-            const GeneralSliverAppBar(appBarTitle: StringsConstant.rideRegistration),
+            GeneralSliverAppBar(
+              appBarTitle: StringsConstant.rideRegistration,
+              bottom: PreferredSize(
+                preferredSize: const Size(
+                  double.maxFinite,
+                  57,
+                ),
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: getHorizontalSize(16),
+                  ),
+                  child: const DateFilterContainer(),
+                ),
+              ),
+            ),
             SliverPadding(
               padding: getPadding(top: 0, bottom: 0, right: 16, left: 16),
               sliver: SliverList(
@@ -39,15 +51,14 @@ class _AllTripPageState extends State<AllTripPage> {
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          //filter container 
-                          DateFilterContainer(),
+                          //filter container
+                          // DateFilterContainer(),
 
                           SizedBox(
                             height: getVerticalSize(10),
                           ),
 
                           //card container
-
                           ListView.separated(
                             physics: const BouncingScrollPhysics(),
                             shrinkWrap: true,
@@ -58,7 +69,9 @@ class _AllTripPageState extends State<AllTripPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (_) => TripDetailsPage(model: tripList[index],),
+                                      builder: (_) => TripDetailsPage(
+                                        model: tripList[index],
+                                      ),
                                     ),
                                   );
                                 },
@@ -137,7 +150,6 @@ class _AllTripPageState extends State<AllTripPage> {
                   SizedBox(
                     width: getHorizontalSize(5),
                   ),
-
                   GeneralRatingBar(rating: model.rating),
                 ],
               ),
