@@ -153,7 +153,9 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
             SliverAppBar(
               backgroundColor: ColorsConstant.white,
               leading: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon: Icon(
                   Icons.arrow_back_ios_outlined,
                   color: ColorsConstant.borderColor,

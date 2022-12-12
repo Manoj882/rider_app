@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rider_app/home/home_screen.dart';
 import '/screens/maps/map_home_screen.dart';
 import 'screens/trips/all_trip_page.dart';
 import 'screens/dashboard/dashboard_page.dart';
@@ -26,7 +27,9 @@ class MyApp extends StatelessWidget {
       // home: DashboardPage(),
       // home: VehicleDetailsPage(),
       // home: MyReviewsPage(),
-      home: MapHomeScreen(),
+      // home: MapHomeScreen(),
+      home: HomeScreen(),
+      
     );
   }
 }
