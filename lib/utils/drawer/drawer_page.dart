@@ -8,7 +8,7 @@ import 'package:rider_app/screens/dashboard/dashboard_page.dart';
 import 'package:rider_app/screens/documents/vehicle_details.dart';
 import 'package:rider_app/utils/divider/custom_divider.dart';
 import 'package:rider_app/utils/listtile/custom_list_tile.dart';
-import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/utils/sliver_appbar/general_sliver_app_bar.dart';
 
 class DrawerPage extends StatelessWidget {
@@ -147,22 +147,22 @@ class DrawerPage extends StatelessWidget {
                     divider(),    
                     CustomListTile().customListTile(
                       context,
-                      iconWidget: SvgPicture.asset('assets/images/img_permission.svg'),
+                      leading: SvgPicture.asset('assets/images/img_permission.svg'),
                       title: 'Permissions', 
                     ),
                     CustomListTile().customListTile(
                       context,
-                      iconWidget: SvgPicture.asset('assets/images/img_terms.svg'),
+                      leading: SvgPicture.asset('assets/images/img_terms.svg'),
                       title: 'Terms & Conditions', 
                     ),
                     CustomListTile().customListTile(
                       context,
-                      iconWidget: SvgPicture.asset('assets/images/img_headset.svg'),
+                      leading: SvgPicture.asset('assets/images/img_headset.svg'),
                       title: 'Support', 
                     ),
                     CustomListTile().customListTile(
                       context,
-                      iconWidget: SvgPicture.asset('assets/images/img_logout.svg'),
+                      leading: SvgPicture.asset('assets/images/img_logout.svg'),
                       title: 'Logout', 
                     ),
                   ],

@@ -5,7 +5,7 @@ import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/constants/strings_constant.dart';
 import 'package:rider_app/models/dashboard_model.dart';
 import 'package:rider_app/utils/sliver_appbar/general_sliver_app_bar.dart';
-import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/widgets/dropdown_widgets/filter_dashboard_dropdown.dart';
 import 'package:rider_app/widgets/custom_elevated_button_widget/general_elevated_button.dart';
 import 'package:rider_app/widgets/radio_button_widget/general_radio_button.dart';

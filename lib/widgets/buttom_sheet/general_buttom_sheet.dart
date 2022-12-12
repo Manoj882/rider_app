@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/utils/size_utils/size_utils.dart';
 import '/constants/strings_constant.dart';
 import '../custom_elevated_button_widget/general_elevated_button.dart';
 

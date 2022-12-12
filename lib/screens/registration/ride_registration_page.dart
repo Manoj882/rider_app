@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/utils/size_utils/size_utils.dart';
 import '/constants/assets_constant.dart';
 import '/constants/colors_constant.dart';
 import '/constants/strings_constant.dart';

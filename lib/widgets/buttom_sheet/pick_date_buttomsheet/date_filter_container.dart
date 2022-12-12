@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rider_app/constants/colors_constant.dart';
-import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/widgets/buttom_sheet/pick_date_buttomsheet/general_date_buttomsheet.dart';
 import 'package:rider_app/widgets/buttom_sheet/general_buttom_sheet.dart';
 

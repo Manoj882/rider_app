@@ -5,7 +5,7 @@ import 'package:rider_app/models/reviews_model.dart';
 import 'package:rider_app/utils/image_utils/circle_avatar_image.dart';
 import 'package:rider_app/utils/rating_bar_utils/general_rating_bar.dart';
 import 'package:rider_app/utils/sliver_appbar/general_sliver_app_bar.dart';
-import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/widgets/buttom_sheet/pick_date_buttomsheet/date_filter_container.dart';
 
 class MyReviewsPage extends StatefulWidget {

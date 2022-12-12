@@ -1,4 +1,6 @@
 class StringsConstant{
+
+  static const String noRouteFound = 'No Route Found';
   //app bar title
   static const String rideRegistration = 'Ride Registration';
   static const String myVehicle = 'My Vehicle';

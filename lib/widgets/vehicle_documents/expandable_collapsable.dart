@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rider_app/constants/colors_constant.dart';
-import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/widgets/vehicle_documents/document_image.dart';
 import 'package:rider_app/widgets/custom_table_row_widget/general_table_row.dart';
 

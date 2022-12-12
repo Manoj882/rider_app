@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rider_app/constants/colors_constant.dart';
+import 'package:rider_app/constants/routes_constant.dart';
 import 'package:rider_app/constants/strings_constant.dart';
 import 'package:rider_app/models/trip_model.dart';
 import 'package:rider_app/screens/trips/trip_details_page.dart';
 import 'package:rider_app/utils/rating_bar_utils/general_rating_bar.dart';
 import 'package:rider_app/utils/sliver_appbar/general_sliver_app_bar.dart';
 import 'package:rider_app/utils/location_to_destination_utils/location_to_destination.dart';
-import 'package:rider_app/utils/form_field_utils/size_utils.dart';
+import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/widgets/buttom_sheet/pick_date_buttomsheet/date_filter_container.dart';
 
 class AllTripPage extends StatefulWidget {
@@ -74,6 +75,7 @@ class _AllTripPageState extends State<AllTripPage> {
                                       ),
                                     ),
                                   );
+                               
                                 },
                                 child: getTripCard(
                                   tripList[index],
