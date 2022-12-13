@@ -21,7 +21,7 @@ class TripRequestPage extends StatefulWidget {
 
 class _TripRequestPageState extends State<TripRequestPage> {
   bool isRequested = true;
-  bool isVisitedRequest = false;
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,19 +34,12 @@ class _TripRequestPageState extends State<TripRequestPage> {
         
             Positioned(
             top: getVerticalSize(10),
-            child: isVisitedRequest
-            ? showLeadingIcon(
-              leadingIcon: 'assets/images/img_backArrow.svg',
-              onPressed: (){
-                Navigator.pop(context);
-              }
-              )  
-            : showLeadingIcon(
+            child: showLeadingIcon(
               leadingIcon: 'assets/images/img_menu.svg',
               onPressed: (){
                 Scaffold.of(context).openDrawer();
               }
-              ),
+            ),
           ),
 
           // for trip request
@@ -108,9 +101,9 @@ class _TripRequestPageState extends State<TripRequestPage> {
                           GeneralElevatedButton(
                             onPressed: () {
                               setState(() {
-                                isVisitedRequest = !isVisitedRequest;
                                 isRequested = !isRequested;
                               });
+                              Navigator.push(context, MaterialPageRoute(builder: (_) => CancelOrAcceptTripRequest()));
                             },
                             buttonTitle: 'View Details',
                           ),
@@ -129,9 +122,7 @@ class _TripRequestPageState extends State<TripRequestPage> {
                         vertical: getVerticalSize(30),
                         horizontal: getHorizontalSize(20),
                       ),
-                      child: isVisitedRequest
-                          ? CancelOrAcceptTripRequest()
-                          : Column(
+                      child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
@@ -142,7 +133,7 @@ class _TripRequestPageState extends State<TripRequestPage> {
                                   height: 10,
                                 ),
                                 Text(
-                                  'No Request yet',
+                                  'No Requests yet',
                                   style: Theme.of(context).textTheme.bodyText1,
                                 ),
                               ],

@@ -15,8 +15,8 @@ class CustomElevatedButton extends StatefulWidget {
   final Function()? onPressed;
   final String buttonTitle;
   double width;
-  final Color backgroundColor;
-  final Color textColor;
+  Color backgroundColor;
+  Color textColor;
 
   @override
   State<CustomElevatedButton> createState() => _CustomElevatedButtonState();
