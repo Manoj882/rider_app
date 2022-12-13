@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rider_app/utils/size_utils/size_utils.dart';
 
-showDrawer(){
+showLeadingIcon({required String leadingIcon, required Function()? onPressed}){
   
   return Builder(
     builder: (context) => Padding(
@@ -21,11 +21,11 @@ showDrawer(){
         ),
         child: IconButton(
           padding: const EdgeInsets.all(0),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
-          },
+          onPressed: onPressed,
+            
+          
           icon: SvgPicture.asset(
-            'assets/images/img_menu.svg',
+            leadingIcon,
           ),
         ),
       ),

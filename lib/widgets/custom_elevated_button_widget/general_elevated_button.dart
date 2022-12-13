@@ -3,13 +3,15 @@ import 'package:rider_app/utils/size_utils/size_utils.dart';
 import '/constants/colors_constant.dart';
 
 class GeneralElevatedButton extends StatefulWidget {
-  const GeneralElevatedButton({
+  GeneralElevatedButton({
     required this.onPressed,
     required this.buttonTitle,
+    this.width = double.maxFinite,
     Key? key}) : super(key: key);
 
   final Function()? onPressed;
   final  String buttonTitle;
+  double width;
   
   @override
   State<GeneralElevatedButton> createState() => _GeneralElevatedButtonState();
@@ -20,6 +22,7 @@ class _GeneralElevatedButtonState extends State<GeneralElevatedButton> {
   Widget build(BuildContext context) {
     return SizedBox(
         height: getVerticalSize(60),
+        width: widget.width,
         child: ElevatedButton(
           onPressed: widget.onPressed,
           style: ElevatedButton.styleFrom(

@@ -6,7 +6,7 @@ import 'package:rider_app/constants/routes_constant.dart';
 import 'package:rider_app/screens/maps/map_home_screen.dart';
 import 'package:rider_app/screens/registration/ride_registration_page.dart';
 import 'package:rider_app/utils/drawer/drawer_page.dart';
-import 'package:rider_app/utils/drawer/show_drawer_utils.dart';
+import 'package:rider_app/utils/drawer/show_leading_icon_utils.dart';
 import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/widgets/custom_elevated_button_widget/general_elevated_button.dart';
 import 'package:rider_app/widgets/radio_button_widget/custom_radio_button.dart';
@@ -106,9 +106,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GeneralElevatedButton(
                         onPressed: () {
-                          _groupUser == 'Rider'
+                          if(_groupUser == null){ return null;}
+                          else{
+                            _groupUser == 'Rider'
                               ? Navigator.pushNamed(context, Routes.registerRoute)
                               : Navigator.pushNamed(context, Routes.mapRoute);
+                          }
                         },
                         buttonTitle: 'Select',
                       ),

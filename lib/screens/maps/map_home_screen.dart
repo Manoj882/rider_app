@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
+// import 'package:location/location.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/screens/search_destination/pickup_point_screen.dart';
 import 'package:rider_app/utils/divider/custom_divider.dart';
 import 'package:rider_app/utils/drawer/drawer_page.dart';
-import 'package:rider_app/utils/drawer/show_drawer_utils.dart';
+import 'package:rider_app/utils/drawer/show_leading_icon_utils.dart';
 import 'package:rider_app/utils/size_utils/size_utils.dart';
 
 import 'package:geolocator/geolocator.dart';
@@ -22,6 +22,8 @@ import 'dart:ui' as ui;
 import 'dart:typed_data';
 
 import 'package:rider_app/utils/listtile/custom_list_tile.dart';
+import 'package:rider_app/widgets/container_widget/curved_buttom_container.dart';
+import 'package:rider_app/widgets/google_map_widget/custom_google_map.dart';
 
 class MapHomeScreen extends StatefulWidget {
   MapHomeScreen({super.key});
@@ -33,83 +35,56 @@ class MapHomeScreen extends StatefulWidget {
 }
 
 class _MapHomeScreenState extends State<MapHomeScreen> {
-  GoogleMapController? mapController;
-  CameraPosition? cameraPosition;
-  LatLng startLocation = const LatLng(27.7288, 85.3592);
-  LatLng destination = const LatLng(27.7061, 85.3148);
+  // GoogleMapController? mapController;
+  // CameraPosition? cameraPosition;
+  // LatLng startLocation = const LatLng(27.7288, 85.3592);
+  // LatLng destination = const LatLng(27.7061, 85.3148);
 
   final _searchController = TextEditingController();
 
   bool isClickSearch = false;
 
-
-  String location ='Null, Press Button';
+  String location ='';
 
     String currentAddress = 'search';
 
 
     Future _getGeoLocationPosition() async {
-
         bool serviceEnabled;
-
         LocationPermission permission;
-
-
         // Test if location services are enabled.
-
         serviceEnabled = await Geolocator.isLocationServiceEnabled();
-
         if (!serviceEnabled) {
-
             await Geolocator.openLocationSettings();
-
             return Future.error('Location services are disabled.');
-
         }
-
 
         permission = await Geolocator.checkPermission();
-
         if (permission == LocationPermission.denied) {
-
             permission = await Geolocator.requestPermission();
-
             if (permission == LocationPermission.denied) {
-
                 // your App should show an explanatory UI now.
-
                 return Future.error('Location permissions are denied');
-
             }
-
         }
-
 
         if (permission == LocationPermission.deniedForever) {
-
             // Permissions are denied forever, handle appropriately.
-
             return Future.error(
-
                 'Location permissions are permanently denied, we cannot request permissions.');
-
         }
 
-
         // When we reach here, permissions are granted and we can
-
         // continue accessing the position of the device.
-
-        return await Geolocator.getCurrentPosition();
-
+        return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     }
 
 
     Future GetAddressFromLatLong(Position position)async {
         List placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
         print(placemarks);
-        Placemark place = placemarks[0];
-        currentAddress = '${place.subLocality}, ${place.locality}';
+        Placemark place = placemarks[1];
+        currentAddress = '${place.thoroughfare},${place.subLocality}, ${place.locality}';
         setState(()  {
 
         });
@@ -130,65 +105,25 @@ class _MapHomeScreenState extends State<MapHomeScreen> {
       drawer: const DrawerPage(),
       body: Stack(
         children: [
-          GoogleMap(
-            mapType: MapType.normal,
-            zoomGesturesEnabled: true,
-            initialCameraPosition: CameraPosition(
-              target: startLocation,
-              zoom: 13.5,
-            ),
-            markers: {
-              Marker(
-                markerId: MarkerId(startLocation.toString()),
-                position: startLocation,
-                infoWindow: const InfoWindow(
-                  title: 'Start Location',
-                  snippet: 'Start Point',
-                ),
-              ),
-              Marker(
-                markerId: MarkerId(destination.toString()),
-                position: destination,
-                infoWindow: const InfoWindow(
-                  title: 'Your Destination',
-                  snippet: 'End Point',
-                ),
-              ),
-            },
-            onMapCreated: (controller) {
-              setState(() {
-                mapController = controller;
-              });
-            },
-          ),
+          CustomGoogleMap(),
 
           //for drawer
           Positioned(
             top: getVerticalSize(10),
-            child: showDrawer(),
+            child: showLeadingIcon(
+              leadingIcon: 'assets/images/img_menu.svg', 
+              onPressed: (){
+              Scaffold.of(context).openDrawer();
+            }),
           ),
 
           //for container
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              width: double.maxFinite,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(30),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromRGBO(0, 0, 0, 0.25),
-                    blurRadius: 10,
-                    offset: Offset(1, 0),
-                  ),
-                ],
-              ),
-              child: Padding(
+            child: CurvedButtomContainer(
+              widget: Padding(
                 padding:
-                    EdgeInsets.only(top: 30, right: 30, left: 30, bottom: 10),
+                    const EdgeInsets.only(top: 30, right: 30, left: 30, bottom: 10),
                 child: isClickSearch 
                 ? PickupPointScreen(address: currentAddress,)
                 : Column(
@@ -237,7 +172,7 @@ class _MapHomeScreenState extends State<MapHomeScreen> {
                                 minHeight: 25,
                                 minWidth: 25,
                               ),
-                              contentPadding: EdgeInsets.all(20),
+                              contentPadding: const EdgeInsets.all(20),
                               prefixIcon: Container(
                                 padding: EdgeInsets.only(
                                   top: getVerticalSize(19),

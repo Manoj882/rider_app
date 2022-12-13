@@ -75,8 +75,8 @@ List<TripModel> tripList = [
   TripModel(
     tripId: '#AIDQGR',
     date: 'Feb 03, 2022, 9: 36 AM',
-    location: 'Chakupath, Pulchok',
-    destination: 'Learning Realm International School, Kalank',
+    location: 'Learning Realm International School, Kalank',
+    destination: 'Chakupath, Pulchok',
     userImage: 'assets/images/avatar.png',
     price: 49,
     rating: 5,

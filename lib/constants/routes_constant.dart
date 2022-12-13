@@ -21,6 +21,7 @@ class Routes {
   static const String documentsRoute = '/documents';
   static const String drawerRoute = '/drawer';
   static const String dashboardRoute = '/dashboard';
+  
 }
 
 class RouteGenerator {
