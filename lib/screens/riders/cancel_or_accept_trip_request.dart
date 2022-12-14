@@ -6,6 +6,7 @@ import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/models/trip_model.dart';
 import 'package:rider_app/screens/payments/payment_recieve_option.dart';
 import 'package:rider_app/utils/dilog_box_utils/custom_dialog_box_container.dart';
+import 'package:rider_app/utils/dim_container_utils/dim_container.dart';
 import 'package:rider_app/utils/drawer/show_leading_icon_utils.dart';
 import 'package:rider_app/utils/image_utils/circle_avatar_image.dart';
 import 'package:rider_app/utils/location_to_destination_utils/location_to_destination.dart';
@@ -34,6 +35,7 @@ class _CancelOrAcceptTripRequestState extends State<CancelOrAcceptTripRequest> {
   Timer? countdownTimer;
   Duration countDownDuration = const Duration(seconds: 5);
 
+  bool isTripStarted = false;
   bool isTripCompleted = false;
 
   bool _isRequestPayment = false;
@@ -88,33 +90,30 @@ class _CancelOrAcceptTripRequestState extends State<CancelOrAcceptTripRequest> {
 
   @override
   Widget build(BuildContext context) {
-    print('Payment method: ${paymentMethod.toString()}');
-   
     String stringDigits(int n) => n.toString();
     final seconds = stringDigits(countDownDuration.inSeconds.remainder(6));
     return Scaffold(
       body: Stack(
         children: [
           CustomGoogleMap(),
-
-          //for back icon
-          Positioned(
-            top: getVerticalSize(10),
-            child: showLeadingIcon(
-              leadingIcon: 'assets/images/img_backArrow.svg',
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              color: Colors.transparent,
+              // color: Colors.red,
               height: double.maxFinite,
               child: Stack(
                 children: [
+                  //for back icon
+                  Positioned(
+                    top: getVerticalSize(10),
+                    child: showLeadingIcon(
+                      leadingIcon: 'assets/images/img_backArrow.svg',
+                      onPressed: () {
+                        Navigator.pop(context);
+                        stopTimer();
+                      },
+                    ),
+                  ),
                   
                   Align(
                     alignment: Alignment.bottomCenter,
@@ -214,7 +213,7 @@ class _CancelOrAcceptTripRequestState extends State<CancelOrAcceptTripRequest> {
                                   ? GeneralElevatedButton(
                                       onPressed: () {
                                         setState(() {
-                                          isTripCompleted = !isTripCompleted;
+                                          isTripStarted = !isTripStarted;
                                         });
                                       },
                                       buttonTitle: 'Start Trip',
@@ -271,8 +270,11 @@ class _CancelOrAcceptTripRequestState extends State<CancelOrAcceptTripRequest> {
                       ),
                     ),
                   ),
+
+                  isTripStarted ? DimContainer() : SizedBox.shrink(),
+              
                   //for trip completed dialog box
-                  isTripCompleted
+                  isTripStarted
                     ? Positioned(
                         top: getVerticalSize(260),
                         right: getHorizontalSize(20),
@@ -310,6 +312,7 @@ class _CancelOrAcceptTripRequestState extends State<CancelOrAcceptTripRequest> {
                                           onPressed: (){
                                             setState(() {
                                               _isRequestPayment = !_isRequestPayment;
+                                              isTripStarted = false;
                                             });
 
                                           },
