@@ -19,21 +19,25 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   String filterValue = 'Weeky';
-  String radioButtonValue = 'Rides';
+  
   changeFilterValue(String value) {
     setState(() {
       filterValue = value;
     });
   }
 
+  String radioButtonValue = 'Rides';
   changeRadioButtonValue(String value) {
-    radioButtonValue = value;
+    setState(() {
+      radioButtonValue = value;
+    });
   }
 
   int? selectedIndex;
 
   @override
   Widget build(BuildContext context) {
+    print('Change radion button value: ${radioButtonValue.toString()}');
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

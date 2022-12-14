@@ -18,7 +18,7 @@ class _GeneralRadioButtonState extends State<GeneralRadioButton> {
   void initState() {
     super.initState();
     groupingValue = 'Rides';
-    widget.function(groupingValue);
+    
   }
 
   @override
