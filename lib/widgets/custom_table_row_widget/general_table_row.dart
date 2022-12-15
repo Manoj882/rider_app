@@ -45,7 +45,9 @@ class GeneralTableRow{
         Text(
           title,
           textAlign: TextAlign.start,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
+        
         Text(
           value,
           textAlign: TextAlign.end,

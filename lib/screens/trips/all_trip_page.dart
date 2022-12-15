@@ -153,6 +153,7 @@ class _AllTripPageState extends State<AllTripPage> {
                     width: getHorizontalSize(5),
                   ),
                   GeneralRatingBar(rating: model.rating),
+                  
                 ],
               ),
               Text('Rs. ${model.price}'),

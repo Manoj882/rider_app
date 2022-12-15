@@ -23,6 +23,8 @@ class ColorsConstant{
   static Color daysAgoColor = HexColor.fromHex('#A9A8A8');
   static Color tileTitleColor = HexColor.fromHex('#455A64');
   static Color tileColor = HexColor.fromHex('#F9F9F9');
+
+  static Color billColor = HexColor.fromHex('#757575');
   
 }
 

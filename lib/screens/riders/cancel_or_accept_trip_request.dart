@@ -129,6 +129,7 @@ class _CancelOrAcceptTripRequestState extends State<CancelOrAcceptTripRequest> {
                           //added payment recieve option
                           child: _isRequestPayment 
                           ? PaymentRecieveOption(changePaymentMethod)
+                      
                           : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
@@ -271,7 +272,7 @@ class _CancelOrAcceptTripRequestState extends State<CancelOrAcceptTripRequest> {
                     ),
                   ),
 
-                  isTripStarted ? DimContainer() : SizedBox.shrink(),
+                  isTripStarted ? const DimContainer() : const SizedBox.shrink(),
               
                   //for trip completed dialog box
                   isTripStarted
@@ -279,48 +280,42 @@ class _CancelOrAcceptTripRequestState extends State<CancelOrAcceptTripRequest> {
                         top: getVerticalSize(260),
                         right: getHorizontalSize(20),
                         left: getHorizontalSize(20),
-                        child: Card(
-                          elevation: 5,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(getVerticalSize(30),),
-                          ),
-                          child: _isRequestPayment 
-                          ? const SizedBox.shrink()
-                          : CustomDialogBoxContainer(
-                                  height: getVerticalSize(242),
-                                  width: getHorizontalSize(374),
-                                  widget: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'Trip Completed',
-                                        style: Theme.of(context).textTheme.headline2,
-                                      ),
-                                      SizedBox(
-                                        height: getVerticalSize(20),
-                                      ),
-                                      Text(
-                                        'You have successfully reached your destination. Don\'t you forget to collect your trip fare !',
-                                        textAlign: TextAlign.center,
-                                        style: Theme.of(context).textTheme.bodyText1,
-                                      ),
-                                      SizedBox(
-                                        height: getVerticalSize(30),
-                                      ),
-                                      GeneralElevatedButton(
-                                          onPressed: (){
-                                            setState(() {
-                                              _isRequestPayment = !_isRequestPayment;
-                                              isTripStarted = false;
-                                            });
+                        child: _isRequestPayment 
+                        ? const SizedBox.shrink()
+                        : CustomDialogBoxContainer(
+                                height: getVerticalSize(242),
+                                width: getHorizontalSize(374),
+                                widget: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Trip Completed',
+                                      style: Theme.of(context).textTheme.headline2,
+                                    ),
+                                    SizedBox(
+                                      height: getVerticalSize(20),
+                                    ),
+                                    Text(
+                                      'You have successfully reached your destination. Don\'t you forget to collect your trip fare !',
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context).textTheme.bodyText1,
+                                    ),
+                                    SizedBox(
+                                      height: getVerticalSize(30),
+                                    ),
+                                    GeneralElevatedButton(
+                                        onPressed: (){
+                                          setState(() {
+                                            _isRequestPayment = !_isRequestPayment;
+                                            isTripStarted = false;
+                                          });
 
-                                          },
-                                          buttonTitle: 'Request Payment'),
-                                    ],
-                                  ),
+                                        },
+                                        buttonTitle: 'Request Payment'),
+                                  ],
                                 ),
-                        ),
+                              ),
                       )
                     : const SizedBox.shrink(),
                 ],

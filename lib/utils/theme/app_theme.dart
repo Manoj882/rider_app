@@ -33,6 +33,10 @@ ThemeData getThemeData() {
         color: ColorsConstant.mediumGrey,
         fontSize: FontSize.size14,
       ),
+      bodyText2: getRegularStyle(
+        color: ColorsConstant.black,
+        fontSize: FontSize.size14,
+      ),
     ),
     
   );

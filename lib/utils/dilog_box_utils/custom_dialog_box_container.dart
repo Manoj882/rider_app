@@ -14,19 +14,25 @@ class CustomDialogBoxContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        // height: getVerticalSize(354),
-        // width: getHorizontalSize(374),
-        height: height,
-        width: width,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(getVerticalSize(30)),
+    return Card(
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(getVerticalSize(30),),
+          ),
+          child: Container(
+          // height: getVerticalSize(354),
+          // width: getHorizontalSize(374),
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(getVerticalSize(30)),
+          ),
+          child: Padding(
+            padding: getPadding(all: 25),
+            child: widget,
+          ),
         ),
-        child: Padding(
-          padding: getPadding(all: 30),
-          child: widget,
-        ),
-      );
+    );
   }
 }

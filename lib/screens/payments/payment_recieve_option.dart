@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rider_app/constants/colors_constant.dart';
+import 'package:rider_app/screens/payment_user/user_side_page.dart';
 import 'package:rider_app/utils/divider/custom_divider.dart';
 import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/widgets/container_widget/curved_buttom_container.dart';
@@ -57,7 +58,16 @@ class _PaymentRecieveOptionState extends State<PaymentRecieveOption> {
           height: getVerticalSize(30),
         ),
         GeneralElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            //go to user side page (for just checking)
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => UserSidePage(),
+                settings: RouteSettings(arguments: groupPaymentOptionValue)
+              ),
+            );
+          },
           buttonTitle: 'Request',
         ),
       ],

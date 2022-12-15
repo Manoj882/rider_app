@@ -6,11 +6,16 @@ import 'package:rider_app/utils/size_utils/size_utils.dart';
 
 
 class GeneralRatingBar extends StatefulWidget {
-  GeneralRatingBar({
+  GeneralRatingBar(
+    {
+    this.function,
     required this.rating,
     super.key});
 
   double? rating;
+
+  Function(double)? function;
+ 
 
 
   @override
@@ -42,6 +47,7 @@ class _GeneralRatingBarState extends State<GeneralRatingBar> {
             widget.rating = rating;
             print('rating: ${widget.rating}');
           });
+          widget.function!(rating);
         },
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rider_app/constants/routes_constant.dart';
 import 'package:rider_app/home/home_screen.dart';
+import 'package:rider_app/screens/payment_user/user_side_page.dart';
 import 'package:rider_app/screens/riders/trip_request_page.dart';
 import '/screens/maps/map_home_screen.dart';
 import 'screens/trips/all_trip_page.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       // home: HomeScreen(),
       // home: Homepage(),
       home: TripRequestPage(),
+      // home: UserSidePage(),
       
     );
   }
