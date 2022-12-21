@@ -32,9 +32,9 @@ class TripDetailsPage extends StatelessWidget {
                 [
                   SingleChildScrollView(
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 16,
+                      padding: EdgeInsets.symmetric(
+                        vertical: getVerticalSize(8),
+                        horizontal: getHorizontalSize(16),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +48,7 @@ class TripDetailsPage extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 10,
+                            height: getVerticalSize(10),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,7 +69,7 @@ class TripDetailsPage extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 10,
+                            height: getVerticalSize(10),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,7 +90,7 @@ class TripDetailsPage extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 10,
+                            height: getVerticalSize(10),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,7 +113,7 @@ class TripDetailsPage extends StatelessWidget {
                             children: [
                               CircleAvatarImage(avatarImage: model.userImage),
                               SizedBox(
-                                width: 10,
+                                width: getHorizontalSize(10),
                               ),
                               Text(
                                 model.userName,
@@ -122,7 +122,7 @@ class TripDetailsPage extends StatelessWidget {
                             ],
                           ),
                           SizedBox(
-                            height: 20,
+                            height: getVerticalSize(20),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,6 +135,7 @@ class TripDetailsPage extends StatelessWidget {
                                     style:
                                         Theme.of(context).textTheme.bodyText1,
                                   ),
+                                  SizedBox(height: getVerticalSize(5),),
                                   Text(
                                     model.totalDistance.toString(),
                                     style:
@@ -176,19 +177,23 @@ class TripDetailsPage extends StatelessWidget {
                           ),
 
                           SizedBox(
-                            height: 20,
+                            height: getVerticalSize(20),
                           ),
                           Container(
-                            height: 161,
-                            width: 373,
+                            height: getVerticalSize(161),
+                            width: getHorizontalSize(373),
                             decoration: BoxDecoration(
                               color: ColorsConstant.receiptColor,
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(
+                                getVerticalSize(20),
+                              ),
                             ),
                             child: Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 20),
+                                  padding: EdgeInsets.only(
+                                    top: getVerticalSize(20),
+                                  ),
                                   child: Text(
                                     'Receipt',
                                     style:
@@ -196,8 +201,10 @@ class TripDetailsPage extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 16),
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: getVerticalSize(10),
+                                    horizontal: getHorizontalSize(16),
+                                  ),
                                   child: Table(
                                     children: [
                                       GeneralTableRow().buildTableRow(
@@ -232,7 +239,7 @@ class TripDetailsPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 120,
+                            height: getVerticalSize(120),
                           ),
                           GeneralElevatedButton(
                             onPressed: () {},

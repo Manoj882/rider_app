@@ -47,7 +47,7 @@ class _LocationToDestinationState extends State<LocationToDestination> {
             Container(
               padding: getPadding(left: 10, top: 3, bottom: 3, right: 0),
               child: SvgPicture.asset(
-                'assets/images/img_vector.svg',
+                'assets/images/img_three_dot.svg',
               ),
             ),
           ],

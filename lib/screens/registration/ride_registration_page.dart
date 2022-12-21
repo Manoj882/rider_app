@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:rider_app/screens/riders/trip_request_page.dart';
 import 'package:rider_app/utils/size_utils/size_utils.dart';
 import '/constants/assets_constant.dart';
 import '/constants/colors_constant.dart';
@@ -13,7 +14,9 @@ import '../../widgets/custom_elevated_button_widget/general_elevated_button.dart
 import '../../widgets/xFile_image_container_widget/general_image_container.dart';
 
 class RiderRegistrationPage extends StatefulWidget {
-  const RiderRegistrationPage({super.key});
+  const RiderRegistrationPage({ super.key});
+
+ 
 
   @override
   State<RiderRegistrationPage> createState() => _RiderRegistrationPageState();
@@ -26,6 +29,14 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
     setState(() {
       vehicleValue = value.toString();
     });
+  }
+
+  late String typeOfUser;
+  @override
+  void didChangeDependencies() {
+    typeOfUser = ModalRoute.of(context)!.settings.arguments as String;
+    print('Hello Type + ${typeOfUser.toString()}');
+    super.didChangeDependencies();
   }
 
   XFile? vehicleDocumentPhoto;
@@ -145,6 +156,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
 
   @override
   Widget build(BuildContext context) {
+    print('type of user in register: ${typeOfUser.toString()}');
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorsConstant.white,
@@ -184,8 +196,8 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: getVerticalSize(10),
                       ),
                       Container(
                         height: getVerticalSize(38),
@@ -207,7 +219,7 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
               ),
             ),
             SliverPadding(
-              padding: const EdgeInsets.only(top: 3),
+              padding: EdgeInsets.only(top: getVerticalSize(3)),
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
                   [
@@ -216,15 +228,15 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                       // height: MediaQuery.of(context).size.height * 1.63,
                       // height: getVerticalSize(1350),
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(30),
+                        color: ColorsConstant.white,
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(getVerticalSize(30)),
                         ),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 4,
-                            blurRadius: 10,
+                            spreadRadius: getVerticalSize(4),
+                            blurRadius: getVerticalSize(10),
                             offset: const Offset(0, 3),
                           ),
                         ],
@@ -414,8 +426,19 @@ class _RiderRegistrationPageState extends State<RiderRegistrationPage> {
                               ),
                               GeneralElevatedButton(
                                 onPressed: () async {
-                                  await GeneralButtomSheet()
-                                      .customButtomSheet(context);
+                                  await GeneralButtomSheet().customButtomSheet(
+                                    context,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (_) => TripRequestPage(
+                                            userType: typeOfUser,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
                                 },
                                 buttonTitle: StringsConstant.register,
                               ),

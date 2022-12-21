@@ -27,7 +27,7 @@ class _GeneralElevatedButtonState extends State<GeneralElevatedButton> {
           onPressed: widget.onPressed,
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(getVerticalSize(30),),
             ),
             backgroundColor: ColorsConstant.primary,
           ),

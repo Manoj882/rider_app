@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/models/trip_model.dart';
 import 'package:rider_app/screens/payment_user/feedback_on_rider.dart';
+import 'package:rider_app/screens/payment_user/payment_successful_report.dart';
 import 'package:rider_app/screens/payment_user/review_success_column.dart';
 import 'package:rider_app/screens/payment_user/rider_found_column.dart';
 import 'package:rider_app/screens/payment_user/trip_completed_body.dart';
+import 'package:rider_app/screens/payment_user/verify_pin_column.dart';
 import 'package:rider_app/screens/payment_user/wallet_column.dart';
 import 'package:rider_app/utils/dilog_box_utils/custom_dialog_box_container.dart';
 import 'package:rider_app/utils/dim_container_utils/dim_container.dart';
@@ -42,11 +45,57 @@ class _UserSidePageState extends State<UserSidePage> {
 
   bool isPaidViaWallet = false;
 
+  bool isPaymentDone = false;
+  bool isPinVerified = false;
+
+  bool isPaymentSuccessfulDone = false;
+
   @override
   void didChangeDependencies() {
     groupPaymentOption = ModalRoute.of(context)!.settings.arguments as String;
     //  print('hello'+groupPaymentOption);
     super.didChangeDependencies();
+  }
+
+
+
+  //for fingerprint
+  final _localAuthentication = LocalAuthentication();
+  String _message = 'Not Authorized';
+
+  Future<bool> checkingForBioMetrics() async {
+    bool canCheckBiometrics = await _localAuthentication.canCheckBiometrics;
+    return canCheckBiometrics;
+  }
+
+  Future<void> _authenticate() async {
+    bool authenticated = false;
+    try {
+      authenticated = await _localAuthentication.authenticate(
+        localizedReason: 'Verify Pin',
+        options: AuthenticationOptions(
+          useErrorDialogs: true,
+          stickyAuth: true, 
+          biometricOnly: true,
+        ),
+        
+       
+      );
+      if(authenticated){
+        setState(() {
+        _message = authenticated ? 'Authorized' : 'Not Authrized';
+        isPaidViaWallet = !isPaidViaWallet;
+      });
+      }
+    } on PlatformException catch (e) {
+      print(e.toString());
+    }
+  }
+
+  @override
+  void initState() {
+    checkingForBioMetrics();
+    super.initState();
   }
 
   @override
@@ -87,31 +136,51 @@ class _UserSidePageState extends State<UserSidePage> {
                         vertical: getVerticalSize(30),
                         horizontal: getHorizontalSize(20),
                       ),
-                      
+
                       //for wallet payment method
                       child: groupPaymentOption == 'Paywell' && isWalletSelected
-                          ? isPaidViaWallet 
-                          ? FeedbackOnRiderColumn(onPressed: (){},)
-                           : WalletColumn(
-                              onPressed: () {
-                                setState(() {
-                                  isPaidViaWallet = !isPaidViaWallet;
-                                });
-                              },
-                            )
-                          
+                          ? isPaidViaWallet
+                              ?  isPaymentSuccessfulDone
+                                  ? isReviewSubmitted
+                                      ? const ReviewSuccessColumn()
+                                      : FeedbackOnRiderColumn(
+                                          onPressed: () {
+                                            setState(() {
+                                              isReviewSubmitted =
+                                                  !isReviewSubmitted;
+                                            });
+                                          },
+                                        )
+                                  : PaymentSuccessfulReportColumn(
+                                      onPressed: () {
+                                        setState(() {
+                                          isPaymentSuccessfulDone =
+                                              !isPaymentSuccessfulDone;
+                                        });
+                                      },
+                                    )
+                              :  WalletColumn(
+                                      onPressed: () async{
+                                        await _authenticate();
+                                        // setState(() {
+                                        //   isPaidViaWallet = !isPaidViaWallet;
+                                        // });
+                                      },
+                                    )
+
                           //for other payment method (cash & QR)
                           : isOtherModePaid
                               ? isReviewSubmitted
-                              ? ReviewSuccessColumn()
-                               : FeedbackOnRiderColumn(
-                                  onPressed: () {
-                                    setState(() {
-                                      isReviewSubmitted = !isReviewSubmitted;
-                                    });
-                                  },
-                                )
-                              : RiderFoundColumn(),
+                                  ? const ReviewSuccessColumn()
+                                  : FeedbackOnRiderColumn(
+                                      onPressed: () {
+                                        setState(() {
+                                          isReviewSubmitted =
+                                              !isReviewSubmitted;
+                                        });
+                                      },
+                                    )
+                              : const RiderFoundColumn(),
                     ),
                   ),
                 ),

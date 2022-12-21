@@ -32,9 +32,9 @@ class _AllTripPageState extends State<AllTripPage> {
             GeneralSliverAppBar(
               appBarTitle: StringsConstant.rideRegistration,
               bottom: PreferredSize(
-                preferredSize: const Size(
+                preferredSize: Size(
                   double.maxFinite,
-                  57,
+                  getVerticalSize(57),
                 ),
                 child: Container(
                   padding: EdgeInsets.symmetric(
@@ -45,7 +45,12 @@ class _AllTripPageState extends State<AllTripPage> {
               ),
             ),
             SliverPadding(
-              padding: getPadding(top: 0, bottom: 0, right: 16, left: 16),
+              padding: getPadding(
+                top: getVerticalSize(0),
+                bottom: getVerticalSize(0),
+                right: getHorizontalSize(16),
+                left: getHorizontalSize(16),
+              ),
               sliver: SliverList(
                 delegate: SliverChildListDelegate(
                   [
@@ -75,7 +80,6 @@ class _AllTripPageState extends State<AllTripPage> {
                                       ),
                                     ),
                                   );
-                               
                                 },
                                 child: getTripCard(
                                   tripList[index],
@@ -103,7 +107,7 @@ class _AllTripPageState extends State<AllTripPage> {
 
   Container getTripCard(TripModel model) {
     return Container(
-      color: Colors.white,
+      color: ColorsConstant.white,
       padding: EdgeInsets.symmetric(
         vertical: getVerticalSize(10),
         horizontal: getHorizontalSize(16),
@@ -120,10 +124,13 @@ class _AllTripPageState extends State<AllTripPage> {
                   SizedBox(
                     width: getHorizontalSize(5),
                   ),
-                  Text(model.tripId),
+                  Text(
+                    model.tripId,
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
                 ],
               ),
-              Text(model.date),
+              Text(model.date, style: Theme.of(context).textTheme.headline2),
             ],
           ),
           SizedBox(
@@ -153,10 +160,12 @@ class _AllTripPageState extends State<AllTripPage> {
                     width: getHorizontalSize(5),
                   ),
                   GeneralRatingBar(rating: model.rating),
-                  
                 ],
               ),
-              Text('Rs. ${model.price}'),
+              Text(
+                'Rs. ${model.price}',
+                style: Theme.of(context).textTheme.headline2,
+              ),
             ],
           ),
         ],

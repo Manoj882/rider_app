@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rider_app/constants/routes_constant.dart';
 import 'package:rider_app/home/home_screen.dart';
+import 'package:rider_app/pagination_example.dart';
 import 'package:rider_app/screens/payment_user/user_side_page.dart';
 import 'package:rider_app/screens/riders/trip_request_page.dart';
 import '/screens/maps/map_home_screen.dart';
@@ -25,18 +26,22 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: getThemeData(),
-      // onGenerateRoute: RouteGenerator().getRoute,
-      // initialRoute: Routes.homeRoute,
+      onGenerateRoute: RouteGenerator().getRoute,
+      initialRoute: Routes.homeRoute,
       // home: RiderRegistrationPage(),
       // home: AllTripPage(),
       // home: DashboardPage(),
       // home: VehicleDetailsPage(),
       // home: MyReviewsPage(),
-      // home: MapHomeScreen(),
-      // home: HomeScreen(),
-      // home: Homepage(),
-      home: TripRequestPage(),
+      // home: MapHomeScreen(userType: 'User',),
+      home: HomeScreen(),
+     
+      // home: TripRequestPage(),
       // home: UserSidePage(),
+
+      // home: HomePage(),
+
+      
       
     );
   }

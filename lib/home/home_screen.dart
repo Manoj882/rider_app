@@ -5,11 +5,14 @@ import 'package:rider_app/constants/colors_constant.dart';
 import 'package:rider_app/constants/routes_constant.dart';
 import 'package:rider_app/screens/maps/map_home_screen.dart';
 import 'package:rider_app/screens/registration/ride_registration_page.dart';
+import 'package:rider_app/screens/riders/trip_request_page.dart';
+
 import 'package:rider_app/utils/drawer/drawer_page.dart';
 import 'package:rider_app/utils/drawer/show_leading_icon_utils.dart';
 import 'package:rider_app/utils/size_utils/size_utils.dart';
 import 'package:rider_app/widgets/custom_elevated_button_widget/general_elevated_button.dart';
 import 'package:rider_app/widgets/radio_button_widget/custom_radio_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +22,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String? _groupUser;
+  String _groupUser = 'User';
 
   ValueChanged<String?> _valueChangedhandler() {
     return (value) {
@@ -39,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
     return Scaffold(
-      drawer: const DrawerPage(),
+      drawer: DrawerPage(userType: _groupUser),
       body: CustomScrollView(
         physics: BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
@@ -106,11 +109,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GeneralElevatedButton(
                         onPressed: () {
-                          if(_groupUser == null){ return null;}
-                          else{
-                            _groupUser == 'Rider'
-                              ? Navigator.pushNamed(context, Routes.registerRoute)
-                              : Navigator.pushNamed(context, Routes.mapRoute);
+                          // if(_groupUser == null){ return null;}
+                          // else{
+                          //   _groupUser == 'Rider'
+                          //     ? Navigator.pushNamed(context, Routes.registerRoute, arguments: _groupUser)
+                          //     // ? Navigator.push(context, MaterialPageRoute(builder: (_) => TripRequestPage(),),)
+                          //     : Navigator.pushNamed(context, Routes.mapRoute);
+                          // }
+                          if (_groupUser == 'Rider') {
+                            // Navigator.pushNamed(context, Routes.registerRoute, arguments: _groupUser);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => RiderRegistrationPage(),
+                                settings: RouteSettings(arguments: _groupUser),
+                              ),
+                            );
+                          } else {
+                            Navigator.pushNamed(context, Routes.mapRoute);
                           }
                         },
                         buttonTitle: 'Select',

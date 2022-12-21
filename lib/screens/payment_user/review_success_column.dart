@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rider_app/utils/review_success_image_utils/review_success_image.dart';
 import 'package:rider_app/utils/size_utils/size_utils.dart';
 
 class ReviewSuccessColumn extends StatelessWidget {
@@ -10,16 +11,7 @@ class ReviewSuccessColumn extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Stack(
-          children: [
-            SvgPicture.asset('assets/images/img_review_success.svg'),
-            Positioned(
-              top: 22,
-              left: 22,
-              child: SvgPicture.asset('assets/images/img_right_sign.svg'),
-            ),
-          ],
-        ),
+        reviewSuccessImage(),
         SizedBox(
           height: getVerticalSize(28),
         ),

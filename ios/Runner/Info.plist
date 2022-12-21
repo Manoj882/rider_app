@@ -31,6 +31,8 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<key>UIBackgroundModes</key>
 	<string>location</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Why is my app authenticating using face id?</string>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>

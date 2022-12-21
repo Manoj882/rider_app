@@ -4,7 +4,7 @@ import '/constants/strings_constant.dart';
 import '../custom_elevated_button_widget/general_elevated_button.dart';
 
 class GeneralButtomSheet {
-  customButtomSheet(BuildContext context) async {
+  customButtomSheet(BuildContext context, {required Function()? onPressed}) async {
     return await showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -35,9 +35,7 @@ class GeneralButtomSheet {
               ),
               SizedBox(height: getVerticalSize(30)),
               GeneralElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+                onPressed: onPressed,
                 buttonTitle: StringsConstant.done,
               ),
             ],

@@ -15,7 +15,11 @@ import 'package:rider_app/widgets/google_map_widget/custom_google_map.dart';
 import 'package:rider_app/widgets/ride_details_widget/ride_details_column.dart';
 
 class TripRequestPage extends StatefulWidget {
-  const TripRequestPage({super.key});
+  const TripRequestPage({
+    required this.userType,
+    super.key});
+
+  final String userType;
 
   @override
   State<TripRequestPage> createState() => _TripRequestPageState();
@@ -27,7 +31,7 @@ class _TripRequestPageState extends State<TripRequestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: DrawerPage(),
+      drawer: DrawerPage(userType: widget.userType,),
       body: Builder(
         builder: (context) {
           return Stack(

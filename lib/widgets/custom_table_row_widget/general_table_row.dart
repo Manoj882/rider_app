@@ -8,11 +8,11 @@ class GeneralTableRow{
     return TableRow(
       children: [
         Divider(
-          thickness: 1,
+          thickness: getHorizontalSize(1),
           color: ColorsConstant.borderColor,
         ),
         Divider(
-          thickness: 1,
+          thickness: getHorizontalSize(1),
           color: ColorsConstant.borderColor,
         ),
        

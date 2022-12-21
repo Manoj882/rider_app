@@ -26,14 +26,15 @@ class Routes {
 
 class RouteGenerator {
   late TripModel tripModel;
+  String userType = 'User';
   Route<dynamic> getRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case Routes.registerRoute:
-        return MaterialPageRoute(builder: (_) => const RiderRegistrationPage());
+        return MaterialPageRoute(builder: (_) => RiderRegistrationPage(),);
       case Routes.mapRoute:
-        return MaterialPageRoute(builder: (_) => MapHomeScreen());
+        return MaterialPageRoute(builder: (_) => MapHomeScreen(userType: userType,));
       case Routes.allTripsRoute:
         return MaterialPageRoute(builder: (_) => const AllTripPage());
       case Routes.tripDetailsRoute:
@@ -45,7 +46,7 @@ class RouteGenerator {
       case Routes.documentsRoute:
         return MaterialPageRoute(builder: (_) => const VehicleDetailsPage());
       case Routes.drawerRoute:
-        return MaterialPageRoute(builder: (_) => const DrawerPage());
+        return MaterialPageRoute(builder: (_) => DrawerPage(userType: userType,));
       case Routes.dashboardRoute:
         return MaterialPageRoute(builder: (_) => const DashboardPage());
       default:

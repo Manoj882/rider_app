@@ -17,7 +17,7 @@ class _DateFilterContainerState extends State<DateFilterContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.white,
+        color: ColorsConstant.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -60,7 +60,7 @@ class _DateFilterContainerState extends State<DateFilterContainer> {
                                 ),
                                 height: getVerticalSize(20),
                                 width:
-                                    getHorizontalSize(70),
+                                    getHorizontalSize(75),
                                 child: Text(
                                   listDays[index],
                                   textAlign:
